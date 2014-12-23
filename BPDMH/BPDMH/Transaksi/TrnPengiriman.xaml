@@ -1,0 +1,360 @@
+﻿<Window  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:extendedButton="clr-namespace:ExtendedButton;assembly=ExtendedButton"
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:tools="clr-namespace:BPDMH.Tools"
+         mc:Ignorable="d" x:Class="BPDMH.Transaksi.TrnPengiriman"
+         Title="TRANSAKSI PENGIRIMAN" Height="580" Width="860" WindowStyle="ToolWindow" SizeToContent="Height"
+         WindowStartupLocation="CenterScreen" FontFamily="Arial" Loaded="Window_Loaded" Closing="Window_Closing">
+
+    <Window.Resources>
+        <CollectionViewSource x:Key="MasterView"/>
+        <CollectionViewSource Source="{Binding Source={StaticResource MasterView}, Path='TrnPengirimanDs'}" x:Key="DetailView"/>
+        <CollectionViewSource x:Key="PelangganLookup"/>
+        <CollectionViewSource x:Key="KendaraanLookup"/>
+        <CollectionViewSource x:Key="KaryawanLookup"/>
+        <CollectionViewSource x:Key="CabangLookup"/>
+        <CollectionViewSource x:Key="PembungkusLookup"/>
+        <CollectionViewSource x:Key="PenerimaLookup"/>
+        <CollectionViewSource x:Key="PembayaranLookup"/>
+
+        <DataTemplate x:Key="ListBoxSubCategoryListTemplate" DataType="{x:Type ListBoxItem}">
+            <TextBlock x:Name="btnSubCategoryList" Background="Transparent" Text="{Binding}" Width="250"/>
+            <DataTemplate.Triggers>
+                <Trigger Property="IsMouseOver"  Value="True">
+                    <Setter TargetName="btnSubCategoryList" Property="Background" Value="RoyalBlue" />
+                </Trigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+        <tools:DigitTextBox x:Key="DigitTextBox"/>
+
+        <Style TargetType="{x:Type DatePickerTextBox}">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <TextBox x:Name="PART_TextBox"
+                            Text="{Binding Path=SelectedDate, StringFormat='dd/MM/yyyy', 
+                            RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <tools:LivePreviewCb x:Key="LivePreviewCb"/>
+        <tools:ModalDialogCustom x:Key="ModalDialogCustomOk"/>
+    </Window.Resources>
+
+
+
+    <Grid>
+
+        <Grid Name="MainGrid" HorizontalAlignment="Left" Width="854" FocusManager.FocusedElement="{Binding ElementName=TbNoSp}" DataContext="{Binding Source={StaticResource MasterView}}" Margin="0,0,-2,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="265*"/>
+                <ColumnDefinition Width="375*"/>
+                <ColumnDefinition Width="214*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="160"/>
+                <RowDefinition Height="110"/>
+                <RowDefinition Height="55"/>
+            </Grid.RowDefinitions>
+            <Grid.CommandBindings>
+                <CommandBinding Command="Save"  CanExecute="Confirm_CanExecute" Executed="Confirm_Executed" />
+            </Grid.CommandBindings>
+            <Grid Grid.Row="1" x:Name="Grid1" Margin="0,0,-1,10" Grid.ColumnSpan="3" Grid.RowSpan="3" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="105" />
+                    <ColumnDefinition Width="270" />
+                    <ColumnDefinition Width="105" />
+                    <ColumnDefinition Width="390" />
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="StackPanelFirstColumn" Grid.Column="0" Orientation="Vertical">
+                    <Label Content="No. SP" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="80" FontFamily="Arial" Height="25" HorizontalAlignment="Right" />
+                    <Label Content="Nama Pengirim" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="115" FontFamily="Arial" Height="25" HorizontalAlignment="Right" Margin="0,5,0,0"/>
+                    <Label Content="Alamat Pengirim" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="115" FontFamily="Arial" Height="25" HorizontalAlignment="Right" Margin="0,5,0,0"/>
+                    <Label Content="Tujuan" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="115" FontFamily="Arial" Height="25" HorizontalAlignment="Right" Margin="0,5,0,0"/>
+                    <Label Content="Kendaraan" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="115" FontFamily="Arial" Height="25" HorizontalAlignment="Right" Margin="0,5,0,0"/>
+                </StackPanel>
+                <StackPanel x:Name="StackPanelSecondColumn" Grid.Column="1" Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox x:Name="TbNoSp" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="92"
+                             FontFamily="Arial" Height="25" VerticalAlignment="Bottom"
+        			Text="{Binding Path=NoSeri, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+                        ValidatesOnDataErrors=true, NotifyOnValidationError=true}" 
+                             Validation.Error="Validation_Error" TabIndex="0"/>
+                        <extendedButton:ImageButton x:Name="BtnNew" Image="../Images/SaveIconNoCircle.png" ImageWidth="10" ImageHeight="12" Width="52" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                             Content="Baru" Margin="5,0,0,0" Click="BtnNew_Click" Command="Save" TabIndex="1"/>
+                        <!--                    <AccessText>_Baru</AccessText>-->
+
+                        <extendedButton:ImageButton x:Name="BtnEdit" Image="../Images/SaveIconNoCircle.png" ImageWidth="10" ImageHeight="12" Width="52" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                             Content="Edit" Margin="5,0,0,0" Click="BtnEdit_OnClick" Command="Save" TabIndex="2"/>
+
+                        <extendedButton:ImageButton x:Name="BtnCariTransaksi" Click="BtnCariTransaksi_OnClick" Width="30" Content="..."
+                        Margin="5,0,0,0" HorizontalAlignment="Left" Height="25" TabIndex="3"/>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="25" Margin="0,5,0,0">
+                        <ComboBox Height="23" x:Name="CboPengirim" Width="70" ItemsSource="{Binding Source={StaticResource PelangganLookup}}"
+						SelectedValuePath="PengirimId" SelectedValue="{Binding PengirimId, Mode=TwoWay}" VerticalContentAlignment="Center"
+						DisplayMemberPath="PengirimId" Margin="5,0,0,0" Visibility="Collapsed"/>
+
+                        <TextBox x:Name="TbNamaPengirim" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="148.768" FontFamily="Arial" 
+						    Text="{Binding Path=NamaPng, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TabIndex="5" 
+                            TextChanged="TbNamaPengirim_TextChanged" KeyDown="TbNamaPengirim_OnKeyDown"/>
+                        <extendedButton:ImageButton x:Name="BtnCariPengirim" Click="BtnCariPengirim_Click" Width="30" Content="..."
+                            Margin="5,0,0,0" HorizontalAlignment="Left" Height="25" Visibility="Collapsed"/>
+                    </StackPanel>
+                    <TextBox x:Name="TbAlamatPengirim" VerticalContentAlignment="Center" Margin="5,5,0,0" Width="259" FontFamily="Arial"
+					    Text="{Binding Path=AlamatPng, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="25"
+                        TabIndex="6" TextChanged="TbAlamatPengirim_TextChanged" KeyDown="TbAlamatPengirim_OnKeyDown"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <!--                    <ComboBox Height="23" x:Name="CboCabang" Width="70" ItemsSource="{Binding Source={StaticResource CabangLookup}}"-->
+                        <!--						SelectedValuePath="CabangId" SelectedValue="{Binding CabangId}" VerticalContentAlignment="Center"-->
+                        <!--						DisplayMemberPath="CabangId"  Margin="5,0,0,0" TabIndex="7" IsEnabled="True"/>-->
+                        <tools:LivePreviewCb Height="25" x:Name="CboCabang" Width="70" 
+                            ItemsSource="{Binding Source={StaticResource CabangLookup}}"
+                            SelectedValuePath="CabangId" SelectedValue="{Binding CabangId}" VerticalContentAlignment="Center"
+                            DisplayMemberPath="CabangId"  Margin="5,0,0,0" TabIndex="8" IsEditable="True"/>
+
+                        <TextBox x:Name="TbTujuan" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="185" FontFamily="Arial" Height="25" VerticalAlignment="Top"
+						    Text="{Binding SelectedItem.NmCabang, ElementName=CboCabang, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="25" Margin="0,5,0,0">
+                        <tools:LivePreviewCb Height="23" x:Name="CboKendaraan" Width="70" ItemsSource="{Binding Source={StaticResource KendaraanLookup}}"
+						    SelectedValuePath="KendaraanId" SelectedValue="{Binding KendaraanId}" VerticalContentAlignment="Center"
+						    DisplayMemberPath="KendaraanId" Margin="5,0,0,0" TabIndex="9" IsEditable="True"/>
+                        <TextBox x:Name="TbKendaraan" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="185" FontFamily="Arial"
+						    Text="{Binding SelectedItem.NoPolisi, ElementName=CboKendaraan, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel x:Name="StackPanelThirdColumn" Grid.Column="2" Orientation="Vertical">
+                    <Label Content="Tgl. Kirim" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="110" FontFamily="Arial" Height="25" HorizontalAlignment="Right"/>
+                    <Label Content="Nama Penerima" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="110" FontFamily="Arial" Height="25" HorizontalAlignment="Right" Margin="0,5,0,0" />
+                    <Label Content="Alamat Penerima" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="110" FontFamily="Arial" Height="25" HorizontalAlignment="Right" BorderThickness="0" Margin="0,5,0,0"/>
+                    <Label Content="Checker" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="110" FontFamily="Arial" Height="25" HorizontalAlignment="Right" Margin="0,5,0,0"/>
+                </StackPanel>
+
+                <StackPanel x:Name="StackPanelForthColumn" Grid.Column="3" Orientation="Vertical" HorizontalAlignment="Left" Width="266">
+                    <DatePicker x:Name="TglPicker" Margin="5,0,0,0" Width="150"
+					    SelectedDate="{Binding Path=TglInput}" HorizontalAlignment="Left" Height="25" 
+                        SelectedDateFormat="Short" TabIndex="10"/>
+                    <StackPanel Orientation="Horizontal" Height="25" Margin="0,5,0,0">
+                        <ComboBox Height="23" x:Name="CboPenerima" Width="70" ItemsSource="{Binding Source={StaticResource PenerimaLookup}}"
+						    SelectedValuePath="PenerimaId" SelectedValue="{Binding PenerimaId}" VerticalContentAlignment="Center"
+						    DisplayMemberPath="PenerimaId" Margin="5,0,0,0" Visibility="Collapsed"/>
+                        <TextBox x:Name="TbNamaPenerima" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="150" FontFamily="Arial" 
+						    Text="{Binding Path=NamaPnr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TbNamaPenerima_TextChanged"
+                            TabIndex="11" KeyDown="TbNamaPenerima_OnKeyDown"/>
+                        <extendedButton:ImageButton x:Name="BtnCrPenerima" Click="BtnCrPenerima_Click" Width="30" Content="..."
+                            Margin="5,0,0,0" HorizontalAlignment="Left" Height="25" Visibility="Collapsed" />
+                    </StackPanel>
+                    <TextBox x:Name="TbAlamatPenerima" VerticalContentAlignment="Center" Margin="5,5,0,0" Width="260.768" FontFamily="Arial"
+					    Text="{Binding Path=AlamatPnr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="25" TextChanged="TbAlamatPenerima_TextChanged"
+                        TabIndex="13" KeyDown="TbAlamatPenerima_OnKeyDown"/>
+                    <tools:LivePreviewCb Height="23" x:Name="CboKaryawan" Width="70" ItemsSource="{Binding Source={StaticResource KaryawanLookup}}"
+					    SelectedValuePath="KaryawanId" SelectedValue="{Binding KaryawanId}" VerticalContentAlignment="Center"
+					    DisplayMemberPath="KaryawanId" Margin="5,5,0,0" HorizontalAlignment="Left" TabIndex="15" IsEditable="True"/>
+                    <TextBox x:Name="TbChecker" VerticalContentAlignment="Center" Margin="5,5,0,0" Width="260.768" FontFamily="Arial"
+					    Text="{Binding SelectedItem.Nama, ElementName=CboKaryawan, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="25" IsEnabled="False"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="4" x:Name="Grid2" Margin="0,10,0,0" Height="35" VerticalAlignment="Top" Grid.RowSpan="2" Grid.ColumnSpan="3" >
+                <StackPanel Orientation="Horizontal" Margin="366,-5,366,0" HorizontalAlignment="Center" Height="40" VerticalAlignment="Bottom">
+                    <extendedButton:ImageButton x:Name="BtnAddDetail" Image="../Images/SaveIconNoCircle.png" ImageWidth="10" ImageHeight="12" Width="122" Margin="0" Height="30" Content="Tambah Detail" VerticalAlignment="Top" Click="BtnAddDetail_Click" HorizontalAlignment="Right"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="5" x:Name="Grid3" Height="150" VerticalAlignment="Top" Margin="0,10,0,0" HorizontalAlignment="Left" Width="840" Grid.ColumnSpan="3"
+              Grid.Column="0">
+                <ListView x:Name="ListViewTransaksi" 
+				IsSynchronizedWithCurrentItem="True" SelectionMode="Multiple"
+				ItemsSource="{Binding Source={StaticResource DetailView}}" Margin="15,0,0,0" HorizontalAlignment="Left" Width="815" >
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <EventSetter Event="GotFocus" Handler="Item_GotFocus" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Jml Colie" Width="100" >
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox Name="TbJmlColie"  Text="{Binding JmlColie}" Height="25" 
+                                             VerticalContentAlignment="Center"
+                                             HorizontalContentAlignment="Right"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Kode Pembungkus" Width="175">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <tools:LivePreviewCb IsEditable="True" 
+										x:Name="cboProduct"
+										IsSynchronizedWithCurrentItem="False"       
+										ItemsSource="{Binding Source={StaticResource PembungkusLookup}}"
+										SelectedValue="{Binding PembungkusId}" 
+										DisplayMemberPath="Keterangan" 
+										SelectedValuePath="PembungkusId" 
+										Height="25" VerticalContentAlignment="Center"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Nama Barang" Width="280">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding NamaBarang}" 
+										Height="25" VerticalContentAlignment="Center"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Berat" Width="150">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding Berat}" 
+										Height="25" VerticalContentAlignment="Center"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn  Width="100">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="BtnDeleteDetail" Height="25" Content="Delete" VerticalContentAlignment="Center"
+                                            Click="BtnDeleteDetail_Click"  />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+
+            <Grid Grid.Row="6" x:Name="Grid4" Margin="0,10,-16,0" Grid.RowSpan="2" Grid.ColumnSpan="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130" />
+                    <ColumnDefinition Width="310" />
+                    <ColumnDefinition Width="2"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="StackPanelFifthColumn" Grid.Column="0" Orientation="Vertical" Height="95" VerticalAlignment="Top" >
+                    <Label Content="Pembayaran" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="80" FontFamily="Arial" Height="25" Margin="0,5,0,0" HorizontalAlignment="Right"/>
+                    <Label Content="Biaya Penerus" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Width="106" Height="25" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,5,0,0"/>
+                    <Label Content="Biaya" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Width="80" Height="25" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,5,0,0"/>
+                    <Label Content="Terbilang" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Width="80" Height="25" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,5,0,0" Visibility="Collapsed"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Grid.Column="1" Height="90" Margin="0,5,-412,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="724" Grid.ColumnSpan="2">
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" Height="25" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                        <tools:LivePreviewCb Height="25" x:Name="CboPembayaran" Width="70" ItemsSource="{Binding Source={StaticResource PembayaranLookup}}"
+						SelectedValuePath="PembayaranId" SelectedValue="{Binding PembayaranId}" VerticalContentAlignment="Center"
+						DisplayMemberPath="PembayaranId" Margin="0" IsEditable="True"/>
+                        <TextBox x:Name="TbPembayaran" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="224" FontFamily="Arial"
+						Text="{Binding SelectedItem.Keterangan, ElementName=CboPembayaran, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
+
+                        <TextBox x:Name="TbBiayaTotal" VerticalContentAlignment="Center" Margin="10,0,0,0" Width="300" FontFamily="Arial" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" TextChanged="TbBiayaTotal_OnTextChanged" IsEnabled="False"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <tools:DigitTextBox x:Name="TbBiayaPnr" Text="{Binding Path=BiayaPenerus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue='0' }" VerticalContentAlignment="Center" Margin="0,5,0,0" Width="300" 
+                                            FontFamily="Arial" Height="25" VerticalAlignment="Top" HorizontalContentAlignment="Right" TextChanged="TbBiayaPnr_OnTextChanged"/>
+                            <tools:DigitTextBox x:Name="TbBiaya" Text="{Binding Path=Biaya, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue='0'}" VerticalContentAlignment="Center"
+                                            Margin="0,5,0,0" Width="300" FontFamily="Arial" Height="25" VerticalAlignment="Top" HorizontalContentAlignment="Right" TextChanged="TbBiaya_TextChanged"/>
+                        </StackPanel>
+
+                        <TextBox x:Name="TbTerbilang" VerticalContentAlignment="Top" Margin="10,5,0,0" Width="390" FontFamily="Arial" Height="55" VerticalAlignment="Top" HorizontalAlignment="Left" IsEnabled="False" Visibility="Visible" TextWrapping="Wrap"/>
+                    </StackPanel>
+
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="7" x:Name="Grid5" Margin="0,10,0,-2" Height="47" VerticalAlignment="Top" HorizontalAlignment="Center" Width="854" Grid.ColumnSpan="3"
+              Grid.Column="0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="855" >
+                    <!--                <extendedButton:ImageButton x:Name="BtnNew" Image="../Images/SaveIconNoCircle.png" ImageWidth="10" ImageHeight="12" Width="122" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Baru" Margin="40,0,0,0" Click="BtnNew_Click" Command="Save">-->
+                    <!--                    ~1~                    <AccessText>_Baru</AccessText>@1@-->
+                    <!--                </extendedButton:ImageButton>-->
+
+                    <extendedButton:ImageButton x:Name="BtnPrevious" Image="../Images/SaveIconNoCircle.png" ImageWidth="10" ImageHeight="12" Width="122" Height="40" Content="Sebelum" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="100,0,0,0" Click="BtnPrevious_Click" Visibility="Visible"/>
+                    <extendedButton:ImageButton x:Name="BtnNext" Image="../Images/SaveIconNoCircle.png" ImageWidth="10" ImageHeight="12" Width="122" Height="40" Content="Berikut" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0" Click="BtnNext_Click" Command="Save" Visibility="Visible"/>
+                    <extendedButton:ImageButton x:Name="BtnCancel" Image="../Images/SaveIconNoCircle.png" ImageWidth="10" ImageHeight="12" Width="122" Height="40" Content="Batal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0" Click="BtnCancel_OnClick" Command="Save" Visibility="Collapsed"/>
+                    <extendedButton:ImageButton x:Name="BtnDelete" Image="../Images/SaveIconNoCircle.png" ImageWidth="10" ImageHeight="12" Width="122" Height="40" Content="Hapus" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0" Click="BtnDelete_Click" Command="Save"/>
+                    <extendedButton:ImageButton x:Name="BtnSave" Image="../Images/SaveIconNoCircle.png" ImageWidth="10" ImageHeight="12" Width="122" Height="40" Content="Simpan" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0" Click="BtnSave_Click" Command="Save"/>
+                    <extendedButton:ImageButton x:Name="BtnClose" Image="../Images/SaveIconNoCircle.png" ImageWidth="10" ImageHeight="12" Width="122" Height="40" Content="Tutup" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0" Click="BtnClose_OnClick"/>
+
+                </StackPanel>
+            </Grid>
+
+            <ListBox Grid.Row="2" Grid.Column="1" x:Name="PlgLookup" KeyDown="PlgLookup_OnKeyDown" 
+                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                 Visibility="Collapsed" Margin="0,0,195,0" Height="115" 
+                 ItemTemplate="{StaticResource ListBoxSubCategoryListTemplate}" 
+                 VerticalAlignment="Top" TabIndex="4" PreviewMouseLeftButtonUp="PlgLookup_PreviewMouseLeftButtonUp" Grid.RowSpan="2"/>
+
+            <ListBox Grid.Row="3" Grid.Column="1" x:Name="AlamatPlgLookup" KeyDown="AlamatPlgLookup_OnKeyDown" 
+                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                 Visibility="Collapsed" Margin="0,0,195,0" Height="85"
+                 ItemTemplate="{StaticResource ListBoxSubCategoryListTemplate}" 
+                 VerticalAlignment="Top" TabIndex="6" PreviewMouseLeftButtonUp="AlamatPlgLookup_OnPreviewMouseLeftButtonUp"/>
+
+            <ListBox Grid.Row="2" Grid.Column="2" x:Name="PnrLookup" KeyDown="PnrLookup_OnKeyDown" 
+                 ScrollViewer.HorizontalScrollBarVisibility="Auto" Width="200"
+                 Visibility="Collapsed" Margin="0,0,14,0" Height="115" 
+                 ItemTemplate="{StaticResource ListBoxSubCategoryListTemplate}" 
+                 VerticalAlignment="Top" TabIndex="11" PreviewMouseLeftButtonUp="PnrLookup_OnPreviewMouseLeftButtonUp" Grid.RowSpan="2"/>
+
+            <ListBox Grid.Row="3" Grid.Column="2" x:Name="AlamatPnrLookup" KeyDown="AlamatPnrLookup_OnKeyDown" 
+                 ScrollViewer.HorizontalScrollBarVisibility="Auto" Width="200"
+                 Visibility="Collapsed" Margin="0,0,9,0" Height="85"
+                 ItemTemplate="{StaticResource ListBoxSubCategoryListTemplate}" 
+                 VerticalAlignment="Top" TabIndex="13" PreviewMouseLeftButtonUp="AlamatPnrLookup_OnPreviewMouseLeftButtonUp"/>
+
+            <Popup Grid.Row="0" Grid.Column="0" Name="MyPopup"
+               Placement="Center"               
+                Visibility="Visible"
+               AllowsTransparency="False"
+               >
+                <Border BorderBrush="RoyalBlue" BorderThickness="1" Background="LightBlue">
+                    <Grid Height="151" Width="315" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="13*"/>
+                            <RowDefinition Height="37*"/>
+                            <RowDefinition Height="45*"/>
+                            <RowDefinition Height="20*"/>
+                            <RowDefinition Height="45*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="23*"/>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="33*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" Content="No. SP" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" Width="80" FontFamily="Arial" Height="25" HorizontalAlignment="Right" Margin="0,0,0,12" Grid.Row="1" />
+                        <Label Grid.Row="2" Grid.Column="0" Content="Tgl. Pengiriman" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="80" FontFamily="Arial" Height="25" HorizontalAlignment="Right" Margin="0,0,0,21" />
+
+                        <TextBox Grid.Row="1" Grid.Column="2" x:Name="TbNoSpLookup" VerticalContentAlignment="Center"
+                    FontFamily="Arial" Margin="0,0,75,0" Height="25" VerticalAlignment="Top"/>
+                        <DatePicker Grid.Row="2" Grid.Column="2" x:Name="TglPickerLookup" Width="150"
+			        HorizontalAlignment="Left" SelectedDateFormat="Short" Margin="0,0,0,20"/>
+
+                        <extendedButton:ImageButton Grid.Row="4" x:Name="BtnCari" 
+                    Image="../Images/SaveIconNoCircle.png" ImageWidth="10" ImageHeight="12" 
+                    Width="122" Margin="89,0" Height="28" Content="Tambah Detail" VerticalAlignment="Top" 
+                    Click="BtnCari_OnClick" Grid.ColumnSpan="3"
+                    Grid.Column="0" />
+
+                    </Grid>
+                </Border>
+            </Popup>
+
+
+        </Grid>
+
+        <tools:ModalDialogCustom x:Name="ModalDialogOk"/>
+    </Grid>
+</Window>

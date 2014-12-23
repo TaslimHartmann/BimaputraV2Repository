@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 24.125, 24.125" name="DCBPDMH">
+  <DataContextMoniker Name="/DCBPDMHDataContext" />
+  <nestedChildShapes>
+    <classShape Id="6d7c188c-e039-496a-8edc-63f42b4f147a" absoluteBounds="4.375, 1.125, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DCBPDMHDataContext/Cabang" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cdf11256-243c-4439-a4b0-6ef0f744cc8e" absoluteBounds="4.3900000000000006, 1.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b8109f9f-39ca-430b-ab06-76c78e79c201" absoluteBounds="0.875, 7.25, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DCBPDMHDataContext/Kendaraan" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d406e0cd-86ef-4840-a76a-d2ed36577bfd" absoluteBounds="0.89000000000000012, 7.7100000000000009, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6d7668bc-df42-4d86-a93f-6502bbb8ca30" absoluteBounds="20, 8.625, 2, 1.193992513020834">
+      <DataClassMoniker Name="/DCBPDMHDataContext/Pembungkus" />
+      <nestedChildShapes>
+        <elementListCompartment Id="09fc5073-067a-4e72-91f3-8655c6dcd5df" absoluteBounds="20.015, 9.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e773995b-0c6c-4cbb-84ff-b26c3084c528" absoluteBounds="21.875, 10.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DCBPDMHDataContext/TrnLogin" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3b6d4bb0-2b6b-4138-b18b-2b5e4e1fe095" absoluteBounds="21.89, 11.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7fd6230f-d9ee-498f-b15d-880324d5aed6" absoluteBounds="0.875, 4, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DCBPDMHDataContext/Pelanggan" />
+      <nestedChildShapes>
+        <elementListCompartment Id="db60198b-1378-4e9a-981b-728021404078" absoluteBounds="0.88999999999999968, 4.4600000000000009, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6d2b9823-bc70-4fa5-9c17-299e8d119f31" absoluteBounds="16, 9, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/DCBPDMHDataContext/Pembayaran" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5cd8d262-4b81-474e-b7f0-c60869470daa" absoluteBounds="16.015, 9.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="34731afa-cecd-4ea0-81ba-b379cddfea83" absoluteBounds="8.125, 5.125, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/DCBPDMHDataContext/PengirimanH" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3ab4e86e-d6a1-460a-8bc4-d82aa40dc824" absoluteBounds="8.14, 5.585, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.375 : 3.0881982421875); (5.375 : 6.86116374309474); (8.125 : 6.86116374309474)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Cabang/Cabang_PengirimanH" />
+      <nodes>
+        <classShapeMoniker Id="6d7c188c-e039-496a-8edc-63f42b4f147a" />
+        <classShapeMoniker Id="34731afa-cecd-4ea0-81ba-b379cddfea83" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.875 : 7.64985270182292); (8.125 : 7.64985270182292)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Kendaraan/Kendaraan_PengirimanH" />
+      <nodes>
+        <classShapeMoniker Id="b8109f9f-39ca-430b-ab06-76c78e79c201" />
+        <classShapeMoniker Id="34731afa-cecd-4ea0-81ba-b379cddfea83" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(16.46875 : 9); (16.46875 : 5.73159912109375); (10.125 : 5.73159912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Pembayaran/Pembayaran_PengirimanH" />
+      <nodes>
+        <classShapeMoniker Id="6d2b9823-bc70-4fa5-9c17-299e8d119f31" />
+        <classShapeMoniker Id="34731afa-cecd-4ea0-81ba-b379cddfea83" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.875 : 5.27204956054688); (4.76041416666667 : 5.27204956054688 : JumpStart); (4.92708083333333 : 5.27204956054688 : JumpEnd); (5.29166666666667 : 5.27204956054688 : JumpStart); (5.45833333333333 : 5.27204956054688 : JumpEnd); (5.82291916666667 : 5.27204956054688 : JumpStart); (5.98958583333333 : 5.27204956054688 : JumpEnd); (8.125 : 5.27204956054688)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Pelanggan/Pelanggan_PengirimanH" />
+      <nodes>
+        <classShapeMoniker Id="7fd6230f-d9ee-498f-b15d-880324d5aed6" />
+        <classShapeMoniker Id="34731afa-cecd-4ea0-81ba-b379cddfea83" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.875 : 5.54409912109375); (4.76041416666667 : 5.54409912109375 : JumpStart); (4.92708083333333 : 5.54409912109375 : JumpEnd); (5.29166666666667 : 5.54409912109375 : JumpStart); (5.45833333333333 : 5.54409912109375 : JumpEnd); (5.82291916666667 : 5.54409912109375 : JumpStart); (5.98958583333333 : 5.54409912109375 : JumpEnd); (8.125 : 5.54409912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Pelanggan/Pelanggan_PengirimanH1" />
+      <nodes>
+        <classShapeMoniker Id="7fd6230f-d9ee-498f-b15d-880324d5aed6" />
+        <classShapeMoniker Id="34731afa-cecd-4ea0-81ba-b379cddfea83" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="3d041dc4-1a8f-4b39-b0f3-dd0b909c7dbb" absoluteBounds="10.625, 0.875, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DCBPDMHDataContext/ReturKirim" />
+      <nestedChildShapes>
+        <elementListCompartment Id="be594a24-1c10-4716-9404-60e7fcec637f" absoluteBounds="10.64, 1.3350000000000009, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(9.6562525 : 5.125); (9.6562525 : 1.85659912109375); (10.625 : 1.85659912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/PengirimanH/PengirimanH_ReturKirim" />
+      <nodes>
+        <classShapeMoniker Id="34731afa-cecd-4ea0-81ba-b379cddfea83" />
+        <classShapeMoniker Id="3d041dc4-1a8f-4b39-b0f3-dd0b909c7dbb" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="ce851128-4f15-4ec8-97c0-abcb0c83d64e" absoluteBounds="13.125, 3.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DCBPDMHDataContext/PengirimanD" />
+      <nestedChildShapes>
+        <elementListCompartment Id="36228b50-51fb-4fa9-889d-873102eb4495" absoluteBounds="13.14, 3.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.125 : 6.07247478436655); (7.75 : 6.07247478436655); (7.75 : 4.63544840494792); (9.57291916666667 : 4.63544840494792 : JumpStart); (9.73958583333333 : 4.63544840494792 : JumpEnd); (13.125 : 4.63544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/PengirimanH/PengirimanH_PengirimanD" />
+      <nodes>
+        <classShapeMoniker Id="34731afa-cecd-4ea0-81ba-b379cddfea83" />
+        <classShapeMoniker Id="ce851128-4f15-4ec8-97c0-abcb0c83d64e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(21.40625 : 8.625); (21.40625 : 4.48159912109375); (19.4583333333333 : 4.48159912109375 : JumpStart); (19.2916666666667 : 4.48159912109375 : JumpEnd); (15.125 : 4.48159912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Pembungkus/Pembungkus_PengirimanD" />
+      <nodes>
+        <classShapeMoniker Id="6d7668bc-df42-4d86-a93f-6502bbb8ca30" />
+        <classShapeMoniker Id="ce851128-4f15-4ec8-97c0-abcb0c83d64e" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="29ed7718-52e5-46d1-acda-78dac4c86e5a" absoluteBounds="12, 7, 2, 2.9247054036458309">
+      <DataClassMoniker Name="/DCBPDMHDataContext/PenerimaanH" />
+      <nestedChildShapes>
+        <elementListCompartment Id="86d77c0e-482a-4943-b428-3cc451889157" absoluteBounds="12.015, 7.4600000000000009, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="02bcdadf-63ec-4705-ab83-411b4e2cc8c7" absoluteBounds="13.25, 10.75, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/DCBPDMHDataContext/PenerimaanD" />
+      <nestedChildShapes>
+        <elementListCompartment Id="48afc9aa-360f-44c4-8a35-cb28a7e1862d" absoluteBounds="13.265, 11.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="32a8dc19-52e0-4f30-bc2f-caf77d2d186c" absoluteBounds="8.375, 9.125, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DCBPDMHDataContext/ReturTerima" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d7558fce-ab6b-4b48-9358-0359f0da45e6" absoluteBounds="8.39, 9.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(13.625 : 9.92470540364583); (13.625 : 10.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/PenerimaanH/PenerimaanH_PenerimaanD" />
+      <nodes>
+        <classShapeMoniker Id="29ed7718-52e5-46d1-acda-78dac4c86e5a" />
+        <classShapeMoniker Id="02bcdadf-63ec-4705-ab83-411b4e2cc8c7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(12 : 9.52485270182292); (10.375 : 9.52485270182292)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/PenerimaanH/PenerimaanH_ReturTerima" />
+      <nodes>
+        <classShapeMoniker Id="29ed7718-52e5-46d1-acda-78dac4c86e5a" />
+        <classShapeMoniker Id="32a8dc19-52e0-4f30-bc2f-caf77d2d186c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.9062525 : 3.0881982421875); (5.9062525 : 8.36540155273438); (12 : 8.36540155273438)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Cabang/Cabang_PenerimaanH" />
+      <nodes>
+        <classShapeMoniker Id="6d7c188c-e039-496a-8edc-63f42b4f147a" />
+        <classShapeMoniker Id="29ed7718-52e5-46d1-acda-78dac4c86e5a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.875 : 8.82859537760417); (1.875 : 9.32851399739583); (4.76041416666667 : 9.32851399739583 : JumpStart); (4.92708083333333 : 9.32851399739583 : JumpEnd); (8.125 : 9.32851399739583); (8.125 : 8.68110270182292); (12 : 8.68110270182292)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Kendaraan/Kendaraan_PenerimaanH" />
+      <nodes>
+        <classShapeMoniker Id="b8109f9f-39ca-430b-ab06-76c78e79c201" />
+        <classShapeMoniker Id="29ed7718-52e5-46d1-acda-78dac4c86e5a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(16 : 9.46235270182292); (14 : 9.46235270182292)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Pembayaran/Pembayaran_PenerimaanH" />
+      <nodes>
+        <classShapeMoniker Id="6d2b9823-bc70-4fa5-9c17-299e8d119f31" />
+        <classShapeMoniker Id="29ed7718-52e5-46d1-acda-78dac4c86e5a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(20.90625 : 9.81899251302083); (20.90625 : 12.6146468098958); (20.5052058333333 : 12.6146468098958 : JumpStart); (20.3385391666667 : 12.6146468098958 : JumpEnd); (19.6614608333333 : 12.6146468098958 : JumpStart); (19.4947941666667 : 12.6146468098958 : JumpEnd); (19.2395833333333 : 12.6146468098958 : JumpStart); (19.0729166666667 : 12.6146468098958 : JumpEnd); (18.8177058333333 : 12.6146468098958 : JumpStart); (18.6510391666667 : 12.6146468098958 : JumpEnd); (18.6067670833333 : 12.6146468098958 : JumpStart); (18.4401004166667 : 12.6146468098958 : JumpEnd); (17.3489595833333 : 12.6146468098958 : JumpStart); (17.1822929166667 : 12.6146468098958 : JumpEnd); (16.5520808333333 : 12.6146468098958 : JumpStart); (16.3854141666667 : 12.6146468098958 : JumpEnd); (15.25 : 12.6146468098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Pembungkus/Pembungkus_PenerimaanD" />
+      <nodes>
+        <classShapeMoniker Id="6d7668bc-df42-4d86-a93f-6502bbb8ca30" />
+        <classShapeMoniker Id="02bcdadf-63ec-4705-ab83-411b4e2cc8c7" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="607bf37f-25d8-4810-b5e4-c30ebf84b18d" absoluteBounds="10.75, 15.375, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/DCBPDMHDataContext/TrnPengirimanD" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9866dedf-597a-44e4-9b00-bddb2b440eeb" absoluteBounds="10.765, 15.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dacb41b6-0342-431d-abef-139894553891" absoluteBounds="12.875, 18, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DCBPDMHDataContext/ReturTrnKirim" />
+      <nestedChildShapes>
+        <elementListCompartment Id="78772da6-74e3-469a-8fb7-993e9bd00b01" absoluteBounds="12.89, 18.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(20.4218725 : 9.81899251302083); (20.4218725 : 16.3565991210938); (19.6614608333333 : 16.3565991210938 : JumpStart); (19.4947941666667 : 16.3565991210938 : JumpEnd); (18.8177058333333 : 16.3565991210938 : JumpStart); (18.6510391666667 : 16.3565991210938 : JumpEnd); (18.6067670833333 : 16.3565991210938 : JumpStart); (18.4401004166667 : 16.3565991210938 : JumpEnd); (17.3489595833333 : 16.3565991210938 : JumpStart); (17.1822929166667 : 16.3565991210938 : JumpEnd); (12.75 : 16.3565991210938)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Pembungkus/Pembungkus_TrnPengirimanD" />
+      <nodes>
+        <classShapeMoniker Id="6d7668bc-df42-4d86-a93f-6502bbb8ca30" />
+        <classShapeMoniker Id="607bf37f-25d8-4810-b5e4-c30ebf84b18d" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="4c2081fb-95c4-4e14-8c64-3bb28b3e55c6" absoluteBounds="6, 20.25, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DCBPDMHDataContext/TrnPenerimaanD" />
+      <nestedChildShapes>
+        <elementListCompartment Id="29de862f-98d5-4abd-a89a-9fa789fd50a9" absoluteBounds="6.0150000000000006, 20.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e2151d76-ca61-4f2f-a1ac-d143045f973c" absoluteBounds="10.25, 21.875, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/DCBPDMHDataContext/ReturTrnTerima" />
+      <nestedChildShapes>
+        <elementListCompartment Id="47b4e0b4-eec8-462d-8c53-6bc53ad250f8" absoluteBounds="10.265, 22.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(21.3906275 : 9.81899251302083); (21.3906275 : 21.03125); (18.6067670833333 : 21.03125 : JumpStart); (18.4401004166667 : 21.03125 : JumpEnd); (8 : 21.03125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Pembungkus/Pembungkus_TrnPenerimaanD" />
+      <nodes>
+        <classShapeMoniker Id="6d7668bc-df42-4d86-a93f-6502bbb8ca30" />
+        <classShapeMoniker Id="4c2081fb-95c4-4e14-8c64-3bb28b3e55c6" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="17f5774d-9dbe-4d0a-9727-da9da56a35cf" absoluteBounds="8.125, 12, 2, 4.2708154296875">
+      <DataClassMoniker Name="/DCBPDMHDataContext/TrnPengirimanH" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bc625066-0f81-4aac-9c56-4798eaa0e346" absoluteBounds="8.14, 12.46, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.17187875 : 3.0881982421875); (6.17187875 : 14.1354077148437); (8.125 : 14.1354077148437)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Cabang/Cabang_TrnPengirimanH" />
+      <nodes>
+        <classShapeMoniker Id="6d7c188c-e039-496a-8edc-63f42b4f147a" />
+        <classShapeMoniker Id="17f5774d-9dbe-4d0a-9727-da9da56a35cf" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.3437475 : 8.82859537760417); (1.3437475 : 13.0364513574219); (2.35416666666667 : 13.0364513574219 : JumpStart); (2.52083333333333 : 13.0364513574219 : JumpEnd); (4.76041416666667 : 13.0364513574219 : JumpStart); (4.92708083333333 : 13.0364513574219 : JumpEnd); (6.08854541666667 : 13.0364513574219 : JumpStart); (6.25521208333333 : 13.0364513574219 : JumpEnd); (8.125 : 13.0364513574219)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Kendaraan/Kendaraan_TrnPengirimanH" />
+      <nodes>
+        <classShapeMoniker Id="b8109f9f-39ca-430b-ab06-76c78e79c201" />
+        <classShapeMoniker Id="17f5774d-9dbe-4d0a-9727-da9da56a35cf" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(16.4687475 : 10.1939925130208); (16.4687475 : 14.0440991210938); (10.125 : 14.0440991210938)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Pembayaran/Pembayaran_TrnPengirimanH" />
+      <nodes>
+        <classShapeMoniker Id="6d2b9823-bc70-4fa5-9c17-299e8d119f31" />
+        <classShapeMoniker Id="17f5774d-9dbe-4d0a-9727-da9da56a35cf" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.75 : 15.8229077148438); (10.125 : 15.8229077148438)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/TrnPengirimanD/TrnPengirimanD_TrnPengirimanH" />
+      <nodes>
+        <classShapeMoniker Id="607bf37f-25d8-4810-b5e4-c30ebf84b18d" />
+        <classShapeMoniker Id="17f5774d-9dbe-4d0a-9727-da9da56a35cf" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.125 : 16.2708154296875); (9.125 : 18.9815991210938); (12.875 : 18.9815991210938)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/TrnPengirimanH/TrnPengirimanH_ReturTrnKirim" />
+      <nodes>
+        <classShapeMoniker Id="17f5774d-9dbe-4d0a-9727-da9da56a35cf" />
+        <classShapeMoniker Id="dacb41b6-0342-431d-abef-139894553891" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="4fe96560-f8e1-42fc-ab3f-517aba2523d2" absoluteBounds="1.5, 15.5, 2, 4.2708154296875">
+      <DataClassMoniker Name="/DCBPDMHDataContext/TrnPenerimaanH" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ae00372b-284c-4f73-9921-5c6c92206efb" absoluteBounds="1.5150000000000001, 15.96, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.8437475 : 3.0881982421875); (4.8437475 : 16.4621477392578); (3.5 : 16.4621477392578)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Cabang/Cabang_TrnPenerimaanH" />
+      <nodes>
+        <classShapeMoniker Id="6d7c188c-e039-496a-8edc-63f42b4f147a" />
+        <classShapeMoniker Id="4fe96560-f8e1-42fc-ab3f-517aba2523d2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.4375 : 8.82859537760417); (2.4375 : 15.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Kendaraan/Kendaraan_TrnPenerimaanH" />
+      <nodes>
+        <classShapeMoniker Id="b8109f9f-39ca-430b-ab06-76c78e79c201" />
+        <classShapeMoniker Id="4fe96560-f8e1-42fc-ab3f-517aba2523d2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(17.26562625 : 10.1939925130208); (17.26562625 : 17.4868004785156); (9.20833333333333 : 17.4868004785156 : JumpStart); (9.04166666666667 : 17.4868004785156 : JumpEnd); (3.5 : 17.4868004785156)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Pembayaran/Pembayaran_TrnPenerimaanH" />
+      <nodes>
+        <classShapeMoniker Id="6d2b9823-bc70-4fa5-9c17-299e8d119f31" />
+        <classShapeMoniker Id="4fe96560-f8e1-42fc-ab3f-517aba2523d2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6 : 21.2315991210938); (2.5 : 21.2315991210938); (2.5 : 19.7708154296875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/TrnPenerimaanD/TrnPenerimaanD_TrnPenerimaanH" />
+      <nodes>
+        <classShapeMoniker Id="4c2081fb-95c4-4e14-8c64-3bb28b3e55c6" />
+        <classShapeMoniker Id="4fe96560-f8e1-42fc-ab3f-517aba2523d2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.0312525 : 19.7708154296875); (3.0312525 : 23.0569482421875); (10.25 : 23.0569482421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DCBPDMHDataContext/TrnPenerimaanH/TrnPenerimaanH_ReturTrnTerima" />
+      <nodes>
+        <classShapeMoniker Id="4fe96560-f8e1-42fc-ab3f-517aba2523d2" />
+        <classShapeMoniker Id="e2151d76-ca61-4f2f-a1ac-d143045f973c" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="e8eeb61b-733d-442f-aa00-a746ea5de166" absoluteBounds="1.375, 1.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DCBPDMHDataContext/Supir" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ee8daf8d-f9bb-4b33-b3fd-1a2921a79979" absoluteBounds="1.3900000000000001, 2.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="550d0b05-7400-452b-bd78-3e01a204a2b4" absoluteBounds="18.375, 5.625, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/DCBPDMHDataContext/Karyawan" />
+      <nestedChildShapes>
+        <elementListCompartment Id="91da4196-9c6c-4fdc-ae36-269298f302d2" absoluteBounds="18.39, 6.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(18.375 : 6.39704956054688); (16.5520833333333 : 6.39704956054687 : JumpStart); (16.3854166666667 : 6.39704956054688 : JumpEnd); (10.125 : 6.39704956054688)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Karyawan/Karyawan_PengirimanH" />
+      <nodes>
+        <classShapeMoniker Id="550d0b05-7400-452b-bd78-3e01a204a2b4" />
+        <classShapeMoniker Id="34731afa-cecd-4ea0-81ba-b379cddfea83" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(18.375 : 7.39024983723958); (16.5520833333333 : 7.39024983723958 : JumpStart); (16.3854166666667 : 7.39024983723958 : JumpEnd); (14 : 7.39024983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Karyawan/Karyawan_PenerimaanH" />
+      <nodes>
+        <classShapeMoniker Id="550d0b05-7400-452b-bd78-3e01a204a2b4" />
+        <classShapeMoniker Id="29ed7718-52e5-46d1-acda-78dac4c86e5a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(19.15625 : 7.78049967447917); (19.15625 : 13.3786461816407); (18.8177058333333 : 13.3786461816407 : JumpStart); (18.6510391666667 : 13.3786461816407 : JumpEnd); (18.6067670833333 : 13.3786461816407 : JumpStart); (18.4401004166667 : 13.3786461816407 : JumpEnd); (17.3489595833333 : 13.3786461816407 : JumpStart); (17.1822929166667 : 13.3786461816407 : JumpEnd); (16.5520808333333 : 13.3786461816407 : JumpStart); (16.3854141666667 : 13.3786461816407 : JumpEnd); (10.125 : 13.3786461816407)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Karyawan/Karyawan_TrnPengirimanH" />
+      <nodes>
+        <classShapeMoniker Id="550d0b05-7400-452b-bd78-3e01a204a2b4" />
+        <classShapeMoniker Id="17f5774d-9dbe-4d0a-9727-da9da56a35cf" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(18.7343725 : 7.78049967447917); (18.7343725 : 17.7434027392578); (18.6067670833333 : 17.7434027392578 : JumpStart); (18.4401004166667 : 17.7434027392578 : JumpEnd); (9.20833333333333 : 17.7434027392578 : JumpStart); (9.04166666666667 : 17.7434027392578 : JumpEnd); (3.5 : 17.7434027392578)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Karyawan/Karyawan_TrnPenerimaanH" />
+      <nodes>
+        <classShapeMoniker Id="550d0b05-7400-452b-bd78-3e01a204a2b4" />
+        <classShapeMoniker Id="4fe96560-f8e1-42fc-ab3f-517aba2523d2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(19.375 : 5.625); (19.375 : 1.85659912109375); (12.625 : 1.85659912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Karyawan/Karyawan_ReturKirim" />
+      <nodes>
+        <classShapeMoniker Id="550d0b05-7400-452b-bd78-3e01a204a2b4" />
+        <classShapeMoniker Id="3d041dc4-1a8f-4b39-b0f3-dd0b909c7dbb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(19.5781275 : 7.78049967447917); (19.5781275 : 18.9815991210938); (18.6067670833333 : 18.9815991210938 : JumpStart); (18.4401004166667 : 18.9815991210938 : JumpEnd); (14.875 : 18.9815991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Karyawan/Karyawan_ReturTrnKirim" />
+      <nodes>
+        <classShapeMoniker Id="550d0b05-7400-452b-bd78-3e01a204a2b4" />
+        <classShapeMoniker Id="dacb41b6-0342-431d-abef-139894553891" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(18.52343375 : 7.78049967447917); (18.52343375 : 22.8565991210938); (12.25 : 22.8565991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Karyawan/Karyawan_ReturTrnTerima" />
+      <nodes>
+        <classShapeMoniker Id="550d0b05-7400-452b-bd78-3e01a204a2b4" />
+        <classShapeMoniker Id="e2151d76-ca61-4f2f-a1ac-d143045f973c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(19.78906625 : 7.78049967447917); (19.78906625 : 11.6642976888021); (20.3385391666667 : 11.6642976888021 : JumpStart); (20.5052058333333 : 11.6642976888021 : JumpEnd); (20.8229166666667 : 11.6642976888021 : JumpStart); (20.9895833333333 : 11.6642976888021 : JumpEnd); (21.3072941666667 : 11.6642976888021 : JumpStart); (21.4739608333333 : 11.6642976888021 : JumpEnd); (21.875 : 11.6642976888021)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DCBPDMHDataContext/Karyawan/Karyawan_TrnLogin" />
+      <nodes>
+        <classShapeMoniker Id="550d0b05-7400-452b-bd78-3e01a204a2b4" />
+        <classShapeMoniker Id="e773995b-0c6c-4cbb-84ff-b26c3084c528" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

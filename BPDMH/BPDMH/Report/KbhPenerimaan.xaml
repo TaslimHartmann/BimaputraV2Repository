@@ -1,0 +1,233 @@
+﻿<Window x:Class="BPDMH.Report.KbhPenerimaan"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:extendedButton="clr-namespace:ExtendedButton;assembly=ExtendedButton"
+        xmlns:tools="clr-namespace:BPDMH.Tools"
+        Height="580" Width="775" WindowStyle="ToolWindow" SizeToContent="WidthAndHeight"
+        Title="KBH PENERIMAAN" WindowStartupLocation="CenterScreen" 
+        FontFamily="Arial" Loaded="PenerimaanReport_OnLoaded">
+    
+    <Window.Resources>
+        <CollectionViewSource x:Key="MasterView"/>
+        <CollectionViewSource Source="{Binding Source={StaticResource MasterView}, Path='TdByPengIdResults'}" x:Key="DetailView"/>
+        <CollectionViewSource x:Key="KendaraanLookup"/>
+        <CollectionViewSource x:Key="KaryawanLookup"/>
+        <CollectionViewSource x:Key="KaryawanLookup1"/>
+        <CollectionViewSource x:Key="KaryawanLookup2"/>
+        <CollectionViewSource x:Key="CabangLookup"/>
+        <CollectionViewSource x:Key="PenerimaLookup"/>
+        <CollectionViewSource x:Key="ReturLookup"/>
+        <CollectionViewSource Source="{Binding Source={StaticResource MasterView}, Path='RtrKirim'}" x:Key="ReturView"/>
+        <Style TargetType="{x:Type DatePickerTextBox}">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <TextBox x:Name="PART_TextBox"
+                            Text="{Binding Path=SelectedDate, StringFormat='dd/MM/yyyy', 
+                            RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Name="MainGrid" HorizontalAlignment="Left" Width="774" FocusManager.FocusedElement="{Binding ElementName=TbNoSp}"
+          DataContext="{Binding Source={StaticResource MasterView}}" Margin="0,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="75" />
+            <RowDefinition Height="45" />
+            <RowDefinition Height="262"/>
+            <RowDefinition Height="98"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="1" x:Name="Grid1" Margin="0,0,4,10" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="95" />
+                <ColumnDefinition Width="225" />
+                <ColumnDefinition Width="120" />
+                <ColumnDefinition Width="370" />
+            </Grid.ColumnDefinitions>
+            <StackPanel x:Name="StackPanelFirstColumn" Grid.Column="0" Orientation="Vertical">
+                <Label Content="Dari" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="115" FontFamily="Arial" Height="25" HorizontalAlignment="Right" Margin="0,5,0,0"/>
+            </StackPanel>
+            <StackPanel x:Name="StackPanelSecondColumn" Grid.Column="1" Orientation="Vertical">
+
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                    <tools:LivePreviewCb Height="23" x:Name="CboCabang" Width="70" ItemsSource="{Binding Source={StaticResource CabangLookup}}"
+						SelectedValuePath="CabangId" VerticalContentAlignment="Center"
+						DisplayMemberPath="CabangId" Margin="5,0,0,0" IsEditable="True"/>
+                    <TextBox x:Name="TbTujuan" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="145" FontFamily="Arial" Height="25" VerticalAlignment="Top"
+						Text="{Binding SelectedItem.NmCabang, ElementName=CboCabang, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel x:Name="StackPanelThirdColumn" Grid.Column="2" Orientation="Vertical">
+                <Label Content="Tgl. Terima" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="110" FontFamily="Arial" Height="25" HorizontalAlignment="Right" Margin="0,5,0,0"/>
+            </StackPanel>
+
+            <StackPanel x:Name="StackPanelForthColumn" Grid.Column="3" Orientation="Vertical" HorizontalAlignment="Left" Width="325">
+                <StackPanel Orientation="Horizontal">
+                    <DatePicker x:Name="TglPicker" Margin="5,5,0,0" Width="150" VerticalContentAlignment="Center"
+					HorizontalAlignment="Left" Height="25" SelectedDateFormat="Short"/>
+                    <Label Content="s/d" VerticalAlignment="Center" Margin="5, 0, 0, 0"/>
+                </StackPanel>
+
+                <DatePicker x:Name="TglPicker2" Margin="5,5,0,0" Width="150" VerticalContentAlignment="Center"
+					HorizontalAlignment="Left" Height="25" SelectedDateFormat="Short"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2" x:Name="Grid2" Height="54" VerticalAlignment="Top" Grid.RowSpan="2" >
+            <StackPanel Orientation="Horizontal" Margin="0,0,4,0" Width="770" HorizontalAlignment="Center">
+                <extendedButton:ImageButton x:Name="BtnGenerate" Image="../Images/SaveIconNoCircle.png" ImageWidth="10" ImageHeight="12" Width="122.5" Height="30" Content="Generate Data" VerticalAlignment="Top" Click="BtnGenerate_OnClick" Margin="190,0,0,0"/>
+                <extendedButton:ImageButton x:Name="BtnCetak" Image="../Images/SaveIconNoCircle.png" ImageWidth="10" ImageHeight="12" Width="122.5" Height="30" Content="Cetak ke Excel" VerticalAlignment="Top" Click="BtnCetak_OnClick" Margin="10,0,0,0" IsEnabled="False"/>
+                <extendedButton:ImageButton x:Name="BtnClose" Image="../Images/DeleteIconNoCircle.png" ImageWidth="10" ImageHeight="12" Width="122.5" Height="30" Margin="10, 0, 0, 0" Content="Tutup" VerticalAlignment="Top" Click="BtnClose_OnClick"/>
+            </StackPanel>
+        </Grid>
+
+        <!--        <Grid Grid.Row="3" x:Name="Grid3" Height="325" VerticalAlignment="Top" Margin="0,10,0,-4" HorizontalAlignment="Left" Width="700" Grid.RowSpan="3" >-->
+        <DataGrid Grid.Row="3"  Name="MainGrid1" ItemsSource="{Binding Source={StaticResource MasterView}}" 
+                  AutoGenerateColumns="False" CanUserAddRows="False" 
+                  RowDetailsVisibilityMode="VisibleWhenSelected" SelectionMode="Single" HorizontalAlignment="Left" Width="745" Margin="10,0,0,15" Grid.RowSpan="3">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <extendedButton:ImageButton Content="+" Click="HandleExpandCollapseForRow"></extendedButton:ImageButton>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Binding="{Binding PengirimanId}" Header="PenerimaanId" Visibility="Hidden">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Binding="{Binding TglInput, StringFormat='{}{0:dd/MM/yyyy}'}" Header="Tgl. Input" Width="100">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Binding="{Binding NoSeri}" Header="No Seri" Width="100">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Binding="{Binding NamaCabang}" Header="Dari" Width="100">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Binding="{Binding KetBayar}" Header="Bea" Width="100">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Binding="{Binding PengirimId}" Header="PengirimId" Visibility="Hidden"/>
+                <DataGridTextColumn Binding="{Binding NamaPengirim}" Header="Pengirim" Width="200">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding NamaPenerima}" Header="Penerima" Width="200">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Binding="{Binding BiayaPenerus}" Header="Penerus" Width="100">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Binding="{Binding Biaya}" Header="Biaya" Width="100">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Binding="{Binding Source={StaticResource ReturView}, Path=Penerima, UpdateSourceTrigger=PropertyChanged }"
+                    Header="Penerima" Width="100" Visibility="Collapsed">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+
+            </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <DataGrid ItemsSource="{Binding Source={StaticResource DetailView}}"
+                              AutoGenerateColumns="False" x:Name="DetailGrid" IsReadOnly="False"
+                              CanUserAddRows="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Path=TrnPengirimanDId}" Header="PengirimanDId" Visibility="Collapsed"/>
+                            <DataGridTextColumn Binding="{Binding Path=TrnPengirimanId1}" Header="PenerimaanId" Visibility="Collapsed"/>
+
+                            <DataGridTextColumn Binding="{Binding Path=JmlColie}" Header="Jml Colie" Width="100">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Binding="{Binding Path=PembungkusId}" Header="PembungkusId" Visibility="Hidden"/>
+                            <DataGridTextColumn Binding="{Binding Path=KetBungkus}" Header="Pembungkus" Width="250">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Binding="{Binding Path=NamaBarang}" Header="Barang" Width="250">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+
+
+                            <DataGridTextColumn Binding="{Binding Path=Berat}" Header="Berat" Width="130">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+        </DataGrid>
+    </Grid>
+</Window>

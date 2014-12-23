@@ -1,0 +1,152 @@
+﻿<Window x:Class="BPDMH.MasterData.Transaksi"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:extendedButton="clr-namespace:ExtendedButton;assembly=ExtendedButton"
+        xmlns:src="clr-namespace:BPDMH.MasterData" xmlns:bpdmh="clr-namespace:BPDMH"
+        xmlns:local="clr-namespace:BPDMH.DataSet"
+        xmlns:tools="clr-namespace:BPDMH.Tools"
+        Title="TRANSAKSI PENGIRIMAN" Height="577" Width="769" WindowStyle="ToolWindow" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" FontFamily="Arial" 
+        Loaded="Window_Loaded">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="FindCriteria" ObjectType="{x:Type tools:CategoryEnum}" />
+        <tools:RadioButtonCheckedConverter x:Key="RadioButtonCheckedConverter"/>
+        <Style x:Key="myHeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Visibility" Value="Collapsed" />
+        </Style>
+        <local:TransactionList x:Key="TransactionList"/>
+    </Window.Resources>
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" Height="290" Margin="20,10,26,0" VerticalAlignment="Top" Width="715">
+            <StackPanel Height="25" Margin="0,3,0,0" Orientation="Horizontal" HorizontalAlignment="Left" Width="715">
+                <Label Content="No. SP" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="115" FontFamily="Arial" Height="25" Margin="0,-1,0,0" />
+                <TextBox x:Name="TbNoSp" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="80" FontFamily="Arial" Height="25" VerticalAlignment="Top" 
+        			Text="{Binding SelectedItem.NoSeri, ElementName=ListBoxNoSp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button Content="..." Width="40" Background="#FFD61D1D" Click="Button_Click" />
+                <Label Content="Tgl. Kirim" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="110" FontFamily="Arial" Height="25" Margin="170,0,0,0" />
+                <DatePicker Margin="5,0,0,0" Width="150"
+        			Text="{Binding SelectedItem.TglInput, ElementName=ListBoxNoSp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="715" Height="25" Margin="0,5,0,0">
+                <Label Content="Nama Pengirim" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="115" FontFamily="Arial" Height="25" Margin="0,0,0,0" />
+                <TextBox x:Name="TbPengirimId" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="50" FontFamily="Arial" 
+                         Text="{Binding SelectedItem.PengirimId, ElementName=ListBoxNoSp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="TbNamaPengirim" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="140" FontFamily="Arial" 
+                         Text="{Binding  ElementName=TbNoSp, Path=NamaPengirim, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Content="Nama Penerima" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="110" FontFamily="Arial" Height="25" Margin="50,0,0,0" />
+                <TextBox x:Name="TbPenerimaId" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="50" FontFamily="Arial" 
+                         Text="{Binding SelectedItem.PenerimaId, ElementName=ListBoxNoSp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="TbNamaPenerima" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="150" FontFamily="Arial" 
+                         Text="{Binding SelectedItem.NamaPenerima, ElementName=ListBoxNoSp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="715" Height="25" Margin="0,5,0,0">
+                <Label Content="Alamat Pengirim" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="115" FontFamily="Arial" Height="25" Margin="0,-1,0,0" />
+                <TextBox x:Name="TbAlamatPengirim" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="185" FontFamily="Arial"
+                         Text="{Binding SelectedItem.AlamatPengirim, ElementName=ListBoxNoSp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Content="Alamat Penerima" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="110" FontFamily="Arial" Height="25" Margin="65,0,0,0" />
+                <TextBox x:Name="TbAlamatPenerima" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="184" FontFamily="Arial"
+                         Text="{Binding SelectedItem.AlamatPenerima, ElementName=ListBoxNoSp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel Height="25" Margin="0,5,0,0" Orientation="Horizontal" HorizontalAlignment="Left" Width="715">
+                <Label Content="Tujuan" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="115" FontFamily="Arial" Height="25" Margin="0,0,0,0" />
+                <TextBox x:Name="TbTujuanId" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="50" FontFamily="Arial" Height="25" VerticalAlignment="Top"
+                         Text="{Binding SelectedItem.CabangId, ElementName=ListBoxNoSp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="TbTujuan" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="185" FontFamily="Arial" Height="25" VerticalAlignment="Top"
+                         Text="{Binding SelectedItem.NmCabang, ElementName=ListBoxNoSp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Content="Supir" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" Width="110" FontFamily="Arial" Height="25" Margin="65,0,0,0" />
+                <TextBox x:Name="TbSupir" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="175" FontFamily="Arial"
+                         Text="{Binding SelectedItem.NamaPelanggan, ElementName=ListBoxNoSp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="715" Height="25" Margin="0,5,0,0">
+                <Label Content="Kendaraan" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="115" FontFamily="Arial" Height="25" Margin="0,-0.5,0,0.5" />
+                <TextBox x:Name="TbKendaraanId" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="50" FontFamily="Arial" Height="25" VerticalAlignment="Top"
+                         Text="{Binding SelectedItem.KendaraanId, ElementName=ListBoxNoSp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="TbKendaraan" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="185" FontFamily="Arial" Height="25" VerticalAlignment="Top"
+                         Text="{Binding SelectedItem.Jenis, ElementName=ListBoxNoSp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Content="Checker" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" Width="110" FontFamily="Arial" Height="25" Margin="65,0,0,0" />
+                <TextBox x:Name="TbChecker" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="175" FontFamily="Arial"
+                         Text="{Binding SelectedItem.Checker, ElementName=ListBoxNoSp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel Height="30" Margin="0,30,0,0" Orientation="Horizontal" HorizontalAlignment="Right" Width="715">
+                <extendedButton:ImageButton x:Name="BtnSimpan" Image="../Images/SaveIconNoCircle.png" ImageWidth="10" ImageHeight="12" Width="80" Margin="250,0,5,0" Height="30" Content="Simpan" VerticalAlignment="Top"/>
+                <extendedButton:ImageButton x:Name="BtnHapus" Image="../Images/DeleteIconNoCircle.png" Margin="5,0,40,0" ImageWidth="10" ImageHeight="12" Content="Hapus" Width="80" Height="30" HorizontalAlignment="Center"/>
+
+
+            </StackPanel>
+            <StackPanel Height="42" Margin="0,15,0,0" Orientation="Horizontal" HorizontalAlignment="Right" Width="715">
+                <Label Content="Jumlah Colie" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="105" Margin="8,0,0,0"/>
+                <Label Content="Pembungkus" VerticalContentAlignment="Center" Margin="0,0,0,0" HorizontalContentAlignment="Center" Width="190"/>
+                <Label Content="Nama Barang" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="0,0,0,0" Width="305" HorizontalAlignment="Center"/>
+                <Label Content="Berat Kg. Bruto" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="0,0,0,0" Width="110" Height="42" VerticalAlignment="Bottom"/>
+            </StackPanel>
+            <StackPanel Height="25" Margin="0" Orientation="Horizontal" HorizontalAlignment="Right" Width="715">
+                <TextBox x:Name="TbJmlColie" VerticalContentAlignment="Center" Margin="3,0,0,0" Width="105" FontFamily="Arial" Height="25" VerticalAlignment="Top"/>
+                <TextBox x:Name="TbPembungkusId" VerticalContentAlignment="Center" Margin="1,0,0,0" Width="50" FontFamily="Arial" Height="25" VerticalAlignment="Top"/>
+                <TextBox x:Name="TbPembungkus" VerticalContentAlignment="Center" Margin="1,0,0,0" Width="140" FontFamily="Arial" Height="25" VerticalAlignment="Top"/>
+                <TextBox x:Name="TbNamaBarang" VerticalContentAlignment="Center" Margin="1,0,0,0" Width="303" FontFamily="Arial" Height="25" VerticalAlignment="Top"/>
+                <TextBox x:Name="TbBerat" VerticalContentAlignment="Center" Margin="1,0,0,0" Width="110" FontFamily="Arial" Height="25" VerticalAlignment="Top"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!--        </ListView>-->
+
+        <ListView Margin="30,302,30,102" x:Name="ListViewTransaksi" SelectionMode="Single"
+			RenderTransformOrigin="1,0.5" FontSize="13.333" 
+                  ItemsSource="{Binding SelectedItem.TrnDetails, ElementName=ListBoxNoSp}"
+                  SelectedIndex="0" >
+            <ListView.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ListView.RenderTransform>
+            <ListView.View>
+                <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="MstPelanggan" ColumnHeaderContainerStyle="{StaticResource myHeaderStyle}" >
+                    <GridView.ColumnHeaderContextMenu>
+                        <ContextMenu FontFamily="Arial" >
+                            <MenuItem Header="Ascending"  />
+                            <MenuItem Header="Descending" />
+                        </ContextMenu>
+                    </GridView.ColumnHeaderContextMenu>
+                    <GridViewColumn Width="102" DisplayMemberBinding="{Binding JmlColie}" />
+                    <GridViewColumn Width="50" DisplayMemberBinding="{Binding PembungkusId}" />
+                    <GridViewColumn Width="140" DisplayMemberBinding="{Binding KetPembungkus}" />
+                    <GridViewColumn Width="304" DisplayMemberBinding="{Binding NamaBarang}" />
+                    <GridViewColumn Width="108" DisplayMemberBinding="{Binding Berat}" />
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StackPanel Margin="0,465,26,57" Orientation="Horizontal" HorizontalAlignment="Right" Width="715">
+            <Label Content="Biaya" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Width="80" Height="25" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+            <TextBox x:Name="TbBiaya" VerticalContentAlignment="Center" Margin="0" Width="300" FontFamily="Arial" Height="25" VerticalAlignment="Top"/>
+        </StackPanel>
+        <StackPanel Margin="0,495,26,27" Orientation="Horizontal" HorizontalAlignment="Right" Width="715">
+            <Label Content="Terbilang" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Width="80" Height="25" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+            <TextBox x:Name="TbTerbilang" VerticalContentAlignment="Center" Margin="0" Width="635" FontFamily="Arial" Height="25" VerticalAlignment="Top"/>
+        </StackPanel>
+        <ComboBox Name="CmbNoSp" Margin="290,15,371,507" ItemsSource="{Binding TransactionHs, Source={StaticResource TransactionList}}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle Fill ="{Binding NoSeri}" Width="16" Height="16" Margin="0,2,5,2" />
+                        <TextBlock Text="{Binding NoSeri}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ListBox x:Name="ListBoxNoSp" BorderThickness="1" 
+    		ItemsSource="{Binding TransactionHs, Source={StaticResource TransactionList}}" Margin="402,15,286,477" Background="Transparent" Visibility="Hidden">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding PengirimId}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,58 @@
+﻿<Window
+  x:Class="BlogPost.Window1"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  Title="Window1"
+  Height="600"
+  Width="800"
+  xmlns:grid="http://schemas.microsoft.com/wpf/2008/toolkit">
+  <Grid>
+    <Grid.Resources>
+      <Style
+        x:Key="myStyle"
+        TargetType="{x:Type Control}">
+        <Setter
+          Property="Margin"
+          Value="10" />
+        <Setter
+          Property="FontSize"
+          Value="16" />
+      </Style>
+    </Grid.Resources>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition
+        Height="2*" />
+      <RowDefinition
+        Height="2*" />
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <TextBox
+      x:Name="txtCountry"
+      Style="{StaticResource myStyle}"      
+      Text="{Binding Country}" />
+    <grid:DataGrid
+      x:Name="customersGrid"
+      Grid.Row="1"
+      Style="{StaticResource myStyle}"
+      AutoGenerateColumns="True"
+      ItemsSource="{Binding}" 
+      InitializingNewItem="OnCustomersGridRowInsert"/>
+    <GridSplitter
+      Grid.Row="2" HorizontalAlignment="Stretch"/>
+    <grid:DataGrid
+      x:Name="ordersGrid"
+      Grid.Row="2"
+      Style="{StaticResource myStyle}"
+      AutoGenerateColumns="True"
+      DataContext="{Binding ElementName=customersGrid,Path=SelectedValue.Orders}"
+      ItemsSource="{Binding}"
+      InitializingNewItem="OnOrdersGridRowInsert">
+    </grid:DataGrid>
+    <Button
+      Grid.Row="3"
+      Style="{StaticResource myStyle}"
+      Content="Submit Changes"
+      Click="OnSubmitChanges" />
+  </Grid>
+</Window>

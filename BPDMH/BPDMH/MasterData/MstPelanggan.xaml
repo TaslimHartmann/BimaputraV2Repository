@@ -1,0 +1,163 @@
+﻿<Window x:Class="BPDMH.MasterData.MstPelanggan"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:extendedButton="clr-namespace:ExtendedButton;assembly=ExtendedButton"
+        xmlns:src="clr-namespace:BPDMH.MasterData"
+        xmlns:tools="clr-namespace:BPDMH.Tools"
+        Title="MASTER PELANGGAN" Height="580" Width="860" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" FontFamily="Arial" 
+        Loaded="Window_Loaded">
+    <Window.Resources>
+        <tools:RadioButtonCheckedConverter x:Key="RadioButtonCheckedConverter"/>
+        <tools:FilesystemSuggestionProvider x:Key="fsp"/>
+        <DataTemplate x:Key="fsTemplate">
+            <Border Padding="5">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="{Binding Path=Name}"
+                       FontWeight="Bold" />
+                    <TextBlock Text="{Binding Path=LastWriteTime, StringFormat='Last Modified: {0}'}" />
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ListBoxSubCategoryListTemplate" DataType="{x:Type ListBoxItem}">
+            <TextBlock x:Name="btnSubCategoryList" Background="Transparent" Text="{Binding}" Width="250"/>
+            <DataTemplate.Triggers>
+                <Trigger Property="IsMouseOver"  Value="True">
+                    <Setter TargetName="btnSubCategoryList" Property="Background" Value="RoyalBlue" />
+                </Trigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="11*"/>
+            <RowDefinition Height="46*"/>
+            <RowDefinition Height="53*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="320*"/>
+            <ColumnDefinition Width="185*"/>
+            <ColumnDefinition Width="347*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel HorizontalAlignment="Center" Height="258" Margin="15,22,22,0" VerticalAlignment="Top" Width="815" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <StackPanel Grid.Row="1" Height="25" Margin="0,3,0,0" Orientation="Horizontal" HorizontalAlignment="Left" Width="815">
+                <Label Content="Id" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" 
+                       Width="300" FontFamily="Arial" Height="24" Margin="0,0,0,1" />
+                <TextBox x:Name="TbId" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="79" FontFamily="Arial" Height="25"
+                         VerticalAlignment="Top" TabIndex="0"/>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Width="815" Height="Auto"  Margin="0,5,0,0">
+                <Label Content="Nama" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Top" 
+                       Width="300" FontFamily="Arial" Height="25" Margin="0,0,0,0" />
+                <!--                <wpfControls:AutoCompleteTextBox x:Name="TbNama" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="184" FontFamily="Arial"-->
+                <!--                                                 Watermark="ketik nama" ItemTemplate="{StaticResource ResourceKey=fsTemplate}"-->
+                <!--                                                 Provider="{StaticResource ResourceKey=fsp}">-->
+                <!--                    <wpfControls:AutoCompleteTextBox.LoadingContent>-->
+                <!--                        <TextBlock Text="Loading" Margin="5" FontSize="12"/>-->
+                <!--                    </wpfControls:AutoCompleteTextBox.LoadingContent>-->
+                <!--                </wpfControls:AutoCompleteTextBox>-->
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="TbNama" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="184" Height="25" FontFamily="Arial" 
+                             VerticalAlignment="Top" TabIndex="1"/>
+                    <!--                    <ListBox x:Name="PlgLookup" KeyDown="PlgLookup_OnKeyDown" ScrollViewer.HorizontalScrollBarVisibility="Hidden"-->
+                    <!--                    ItemTemplate="{StaticResource ListBoxSubCategoryListTemplate}" Visibility="Collapsed" Margin="10, 0, 0, 0" />-->
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="815" Height="25" Margin="0,5,0,0">
+                <Label Content="Telpon" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" 
+                       Width="300" FontFamily="Arial" Height="25" Margin="0,-1,0,0" />
+                <TextBox x:Name="TbTelpon" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="184" FontFamily="Arial"/>
+            </StackPanel>
+            <StackPanel Height="25" Margin="0,5,0,0" Orientation="Horizontal" HorizontalAlignment="Left" Width="815">
+                <Label Content="Kontak Person" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" 
+                       Width="300" FontFamily="Arial" Height="25" Margin="0,0,0,0" />
+                <TextBox x:Name="TbKtPerson" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="184" FontFamily="Arial" Height="25" VerticalAlignment="Top"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="815" Height="25" Margin="0,5,0,0">
+                <Label Content="CategoryEnum" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" 
+                       Width="300" FontFamily="Arial" Height="25" Margin="0,-0.5,0,0.5" />
+                <RadioButton x:Name="RbPengirim" GroupName="RbPengirim" Margin="0,5" 
+                            IsChecked="{Binding BooleanProperty, Converter={StaticResource RadioButtonCheckedConverter}, 
+                            ConverterParameter={x:Static src:MstPelanggan.BooleanTrue}}">
+                    <TextBlock TextWrapping="Wrap" Text="Pengirim" FontFamily="Arial"/>
+                </RadioButton>
+                <RadioButton x:Name="RbPenerima" GroupName="RbPenerima" Margin="10,5,0,5" 
+                            IsChecked="{Binding BooleanProperty, Converter={StaticResource RadioButtonCheckedConverter}, 
+                            ConverterParameter={x:Static src:MstPelanggan.BooleanFalse}}">
+                    <TextBlock TextWrapping="Wrap" Text="Penerima" FontFamily="Arial" />
+                </RadioButton>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="815" Height="25" Margin="0,5,0,0">
+                <Label Content="Alamat" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" 
+                       Width="300" FontFamily="Arial" Height="25" Margin="0,-0.5,0,0.5" />
+                <TextBox x:Name="TbAlamat" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="265" FontFamily="Arial" Height="25" VerticalAlignment="Top"/>
+            </StackPanel>
+            <StackPanel Height="30" Margin="0,30,0,0" Orientation="Horizontal" HorizontalAlignment="Center" Width="816">
+                <!--                <Button Content="Get Value" Width="75" Margin="305, 0, 0, 0" Name="BtnGetValue" Click="BtnGetValue_Click" Height="30" VerticalAlignment="Bottom"/>-->
+                <extendedButton:ImageButton x:Name="BtnBaru" Image="../Images/SaveIconNoCircle.png" ImageWidth="10" ImageHeight="12" Width="80" Margin="305,0,0,0" Height="30" Content="Baru" Click="BtnBaru_OnClick"/>
+                <extendedButton:ImageButton x:Name="BtnSimpan" Image="../Images/SaveIconNoCircle.png" ImageWidth="10" ImageHeight="12" Width="80" Margin="10,0,0,0" Height="30" Content="Simpan" Click="BtnSave_Click"/>
+                <extendedButton:ImageButton x:Name="BtnHapus" Image="../Images/DeleteIconNoCircle.png" Margin="10,0,0,0" ImageWidth="10" ImageHeight="12" Content="Hapus" Width="80" Height="30" Click="BtnHapus_Click"/>
+                <extendedButton:ImageButton x:Name="BtnClose" Image="../Images/DeleteIconNoCircle.png" Margin="10,0,0,0" ImageWidth="10" ImageHeight="12" Content="Tutup" Width="80" Height="30" Click="BtnClose_OnClick"/>
+
+            </StackPanel>
+        </StackPanel>
+
+        <ListView Margin="15,0,17,15" x:Name="ListViewPelanggan" SelectionMode="Single" 
+			RenderTransformOrigin="1,0.5" FontSize="13.333" SelectionChanged="ListViewPelanggan_SelectionChanged" MouseDoubleClick="ListViewPelanggan_MouseDoubleClick" KeyDown="ListViewPelanggan_KeyDown" Grid.ColumnSpan="3"
+                  Grid.Column="0" Grid.Row="2" >
+            <ListView.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ListView.RenderTransform>
+            <ListView.View>
+                <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="MstPelanggan"  >
+                    <GridView.ColumnHeaderContextMenu>
+                        <ContextMenu FontFamily="Arial" >
+                            <MenuItem Header="Ascending"  />
+                            <MenuItem Header="Descending" />
+                        </ContextMenu>
+                    </GridView.ColumnHeaderContextMenu>
+                    <GridViewColumn Header="Id" Width="80" DisplayMemberBinding="{Binding PelangganId}" />
+                    <GridViewColumn Header="Nama" Width="155" DisplayMemberBinding="{Binding NamaPlg}" />
+                    <GridViewColumn Header="Telpon" Width="127" DisplayMemberBinding="{Binding Telp}" />
+                    <GridViewColumn Header="Kontak Person" Width="150" DisplayMemberBinding="{Binding KtPerson}" />
+                    <GridViewColumn Header="Kategori" Width="90" DisplayMemberBinding="{Binding Kategori}" />
+                    <GridViewColumn Header="Alamat" Width="200" DisplayMemberBinding="{Binding Alamat}" />
+                    <!--                    <GridViewColumn>-->
+                    <!--                        <ListBox ItemsSource="{Binding Elements}" Margin="0,10,0,10" BorderThickness="0" Background="Transparent">-->
+                    <!--                            <ListBox.ItemContainerStyle>-->
+                    <!--                                <Style TargetType="{x:Type ListBoxItem}">-->
+                    <!--                                    <Setter Property="IsSelected" Value="{Binding Path=IsPenerima, Mode=TwoWay}" />-->
+                    <!--                                    <Setter Property="Template">-->
+                    <!--                                        <Setter.Value>-->
+                    <!--                                            <ControlTemplate TargetType="ListBoxItem">-->
+                    <!--                                                <ContentPresenter/>-->
+                    <!--                                            </ControlTemplate>-->
+                    <!--                                        </Setter.Value>-->
+                    <!--                                    </Setter>-->
+                    <!--                                </Style>-->
+                    <!--                            </ListBox.ItemContainerStyle>-->
+                    <!--                            <ListBox.ItemTemplate>-->
+                    <!--                                <DataTemplate>-->
+                    <!--                                    <RadioButton Content="{Binding Key}"-->
+                    <!--                                        IsChecked="{Binding Path=IsSelected, Mode=TwoWay,-->
+                    <!--                                        RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}"-->
+                    <!--                                        Margin="0,5,0,5"/>-->
+                    <!--                                </DataTemplate>-->
+                    <!--                            </ListBox.ItemTemplate>-->
+                    <!--                        </ListBox>-->
+                    <!--                    </GridViewColumn>-->
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <ListBox Grid.Row="1" Grid.Column="2" x:Name="PlgLookup" KeyDown="PlgLookup_OnKeyDown" ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                    ItemTemplate="{StaticResource ListBoxSubCategoryListTemplate}" Visibility="Collapsed" Margin="0,0,87,0" Height="145" 
+                 VerticalAlignment="Top" TabIndex="2"/>
+    </Grid>
+</Window>

@@ -1,0 +1,47 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:EB="clr-namespace:ExtendedButton;assembly=ExtendedButton" 
+        x:Class="SampleView.MainWindow"
+        Title="ButtomViewer" Height="276" Width="480">
+    <Window.Resources>
+        <Style x:Key="CustomStyle" TargetType="{x:Type EB:ImageButton}">
+            <Setter Property="FontFamily" Value="Comic sans Ms"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Background" Value="Azure"/>
+            <Setter Property="Foreground" Value="#FFFFBD6F"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Button Width="100" Height="30" Content="Click" Grid.Row="0"
+                HorizontalAlignment="Right" Margin="0,0,25,0" 
+                VerticalAlignment="Center" />
+        <EB:ImageButton Width="100" Height="30" Content="Click" Grid.Row="1"
+                        HorizontalAlignment="Right" Margin="0,0,25,0"
+                        VerticalAlignment="Center"/>
+        <EB:ImageButton Width="100" Height="30" Content="Click" Grid.Row="2"
+                        Image="Click.png" 
+                        ImageHeight="20" ImageWidth="20" HorizontalAlignment="Right"
+                        Margin="0,0,25,0" VerticalAlignment="Center" />
+        <EB:ImageButton Width="120" Height="30" Content="Click" Grid.Row="3"
+                        Image="Click.png" 
+                        ImageHeight="20" ImageWidth="20" HorizontalAlignment="Right"
+                        Style="{DynamicResource CustomStyle}"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        Margin="0,0,25,0" VerticalAlignment="Center" Foreground="RoyalBlue" />
+
+        <Label Content="Comon Button" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0,0,0"/>
+        <Label Content="ImageButton Without Image" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Center" Margin="40,0,0,0"/>
+        <Label Content="ImageButton With Image" HorizontalAlignment="Left"  Grid.Row="2" VerticalAlignment="Center" Margin="40,0,0,0" />
+        <Label Content="Customize ImageButton with Custom Style" HorizontalAlignment="Left"  Grid.Row="3" VerticalAlignment="Center" Margin="40,0,0,0" />
+    </Grid>
+</Window>

@@ -1,0 +1,1048 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BPDMH" Class="DCBPDMHDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=TASLIMS_LAPTOP\SQLEXPRESS;Initial Catalog=BPDMH;Persist Security Info=True;User ID=thartmann" SettingsObjectName="BPDMH.Properties.Settings" SettingsPropertyName="BPDMHConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Cabang" Member="Cabangs">
+    <Type Name="Cabang">
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NmCabang" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="Telp" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="Fax" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPerson" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="Alamat" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Association Name="Cabang_PengirimanH" Member="PengirimanHs" ThisKey="CabangId" OtherKey="CabangId" Type="PengirimanH" />
+      <Association Name="Cabang_PenerimaanH" Member="PenerimaanHs" ThisKey="CabangId" OtherKey="CabangId" Type="PenerimaanH" />
+      <Association Name="Cabang_TrnPengirimanH" Member="TrnPengirimanHs" ThisKey="CabangId" OtherKey="CabangId" Type="TrnPengirimanH" />
+      <Association Name="Cabang_TrnPenerimaanH" Member="TrnPenerimaanHs" ThisKey="CabangId" OtherKey="CabangId" Type="TrnPenerimaanH" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Kendaraan" Member="Kendaraans">
+    <Type Name="Kendaraan">
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NoPolisi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Jenis" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="Keterangan" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Association Name="Kendaraan_PengirimanH" Member="PengirimanHs" ThisKey="KendaraanId" OtherKey="KendaraanId" Type="PengirimanH" />
+      <Association Name="Kendaraan_PenerimaanH" Member="PenerimaanHs" ThisKey="KendaraanId" OtherKey="KendaraanId" Type="PenerimaanH" />
+      <Association Name="Kendaraan_TrnPengirimanH" Member="TrnPengirimanHs" ThisKey="KendaraanId" OtherKey="KendaraanId" Type="TrnPengirimanH" />
+      <Association Name="Kendaraan_TrnPenerimaanH" Member="TrnPenerimaanHs" ThisKey="KendaraanId" OtherKey="KendaraanId" Type="TrnPenerimaanH" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pembungkus" Member="Pembungkus">
+    <Type Name="Pembungkus">
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Keterangan" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Association Name="Pembungkus_PengirimanD" Member="PengirimanDs" ThisKey="PembungkusId" OtherKey="PembungkusId" Type="PengirimanD" />
+      <Association Name="Pembungkus_PenerimaanD" Member="PenerimaanDs" ThisKey="PembungkusId" OtherKey="PembungkusId" Type="PenerimaanD" />
+      <Association Name="Pembungkus_TrnPengirimanD" Member="TrnPengirimanDs" ThisKey="PembungkusId" OtherKey="PembungkusId" Type="TrnPengirimanD" />
+      <Association Name="Pembungkus_TrnPenerimaanD" Member="TrnPenerimaanDs" ThisKey="PembungkusId" OtherKey="PembungkusId" Type="TrnPenerimaanD" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TrnLogin" Member="TrnLogins">
+    <Type Name="TrnLogin">
+      <Column Name="TrnLoginId" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="LoginTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LogoutTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Karyawan_TrnLogin" Member="Karyawan" ThisKey="KaryawanId" OtherKey="KaryawanId" Type="Karyawan" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pelanggan" Member="Pelanggans">
+    <Type Name="Pelanggan">
+      <Column Name="PelangganId" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NamaPlg" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Telp" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPerson" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Alamat" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="IsPengirim" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Pelanggan_PengirimanH" Member="PengirimanHs" ThisKey="PelangganId" OtherKey="PengirimId" Type="PengirimanH" />
+      <Association Name="Pelanggan_PengirimanH1" Member="PengirimanHs1" ThisKey="PelangganId" OtherKey="PenerimaId" Type="PengirimanH" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pembayaran" Member="Pembayarans">
+    <Type Name="Pembayaran">
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Keterangan" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Association Name="Pembayaran_PengirimanH" Member="PengirimanHs" ThisKey="PembayaranId" OtherKey="PembayaranId" Type="PengirimanH" />
+      <Association Name="Pembayaran_PenerimaanH" Member="PenerimaanHs" ThisKey="PembayaranId" OtherKey="PembayaranId" Type="PenerimaanH" />
+      <Association Name="Pembayaran_TrnPengirimanH" Member="TrnPengirimanHs" ThisKey="PembayaranId" OtherKey="PembayaranId" Type="TrnPengirimanH" />
+      <Association Name="Pembayaran_TrnPenerimaanH" Member="TrnPenerimaanHs" ThisKey="PembayaranId" OtherKey="PembayaranId" Type="TrnPenerimaanH" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PengirimanH" Member="PengirimanHs">
+    <Type Name="PengirimanH">
+      <Column Name="PengirimanId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="PengirimId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="PenerimaId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Terbilang" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="PengirimanH_ReturKirim" Member="ReturKirims" ThisKey="PengirimanId" OtherKey="PengirimanId" Type="ReturKirim" />
+      <Association Name="PengirimanH_PengirimanD" Member="PengirimanDs" ThisKey="PengirimanId" OtherKey="PengirimanId" Type="PengirimanD" />
+      <Association Name="Cabang_PengirimanH" Member="Cabang" ThisKey="CabangId" OtherKey="CabangId" Type="Cabang" IsForeignKey="true" />
+      <Association Name="Kendaraan_PengirimanH" Member="Kendaraan" ThisKey="KendaraanId" OtherKey="KendaraanId" Type="Kendaraan" IsForeignKey="true" />
+      <Association Name="Pembayaran_PengirimanH" Member="Pembayaran" ThisKey="PembayaranId" OtherKey="PembayaranId" Type="Pembayaran" IsForeignKey="true" />
+      <Association Name="Pelanggan_PengirimanH" Member="Pelanggan" ThisKey="PengirimId" OtherKey="PelangganId" Type="Pelanggan" IsForeignKey="true" />
+      <Association Name="Pelanggan_PengirimanH1" Member="Pelanggan1" ThisKey="PenerimaId" OtherKey="PelangganId" Type="Pelanggan" IsForeignKey="true" />
+      <Association Name="Karyawan_PengirimanH" Member="Karyawan" ThisKey="KaryawanId" OtherKey="KaryawanId" Type="Karyawan" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ReturKirim" Member="ReturKirims">
+    <Type Name="ReturKirim">
+      <Column Name="ReturKirimId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PengirimanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="TglTerima" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Penerima" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="PengirimanH_ReturKirim" Member="PengirimanH" ThisKey="PengirimanId" OtherKey="PengirimanId" Type="PengirimanH" IsForeignKey="true" />
+      <Association Name="Karyawan_ReturKirim" Member="Karyawan" ThisKey="KaryawanId" OtherKey="KaryawanId" Type="Karyawan" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PengirimanD" Member="PengirimanDs">
+    <Type Name="PengirimanD">
+      <Column Name="PengirimanDId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PengirimanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Association Name="PengirimanH_PengirimanD" Member="PengirimanH" ThisKey="PengirimanId" OtherKey="PengirimanId" Type="PengirimanH" IsForeignKey="true" />
+      <Association Name="Pembungkus_PengirimanD" Member="Pembungkus" ThisKey="PembungkusId" OtherKey="PembungkusId" Type="Pembungkus" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PenerimaanH" Member="PenerimaanHs">
+    <Type Name="PenerimaanH">
+      <Column Name="PenerimaanId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="PengirimId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="PenerimaId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Terbilang" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="PenerimaanH_PenerimaanD" Member="PenerimaanDs" ThisKey="PenerimaanId" OtherKey="PenerimaanId" Type="PenerimaanD" />
+      <Association Name="PenerimaanH_ReturTerima" Member="ReturTerimas" ThisKey="PenerimaanId" OtherKey="PenerimaanId" Type="ReturTerima" />
+      <Association Name="Cabang_PenerimaanH" Member="Cabang" ThisKey="CabangId" OtherKey="CabangId" Type="Cabang" IsForeignKey="true" />
+      <Association Name="Kendaraan_PenerimaanH" Member="Kendaraan" ThisKey="KendaraanId" OtherKey="KendaraanId" Type="Kendaraan" IsForeignKey="true" />
+      <Association Name="Pembayaran_PenerimaanH" Member="Pembayaran" ThisKey="PembayaranId" OtherKey="PembayaranId" Type="Pembayaran" IsForeignKey="true" />
+      <Association Name="Karyawan_PenerimaanH" Member="Karyawan" ThisKey="KaryawanId" OtherKey="KaryawanId" Type="Karyawan" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PenerimaanD" Member="PenerimaanDs">
+    <Type Name="PenerimaanD">
+      <Column Name="PenerimaanDId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PenerimaanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Association Name="PenerimaanH_PenerimaanD" Member="PenerimaanH" ThisKey="PenerimaanId" OtherKey="PenerimaanId" Type="PenerimaanH" IsForeignKey="true" />
+      <Association Name="Pembungkus_PenerimaanD" Member="Pembungkus" ThisKey="PembungkusId" OtherKey="PembungkusId" Type="Pembungkus" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ReturTerima" Member="ReturTerimas">
+    <Type Name="ReturTerima">
+      <Column Name="ReturTerimaId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PenerimaanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="TglTerima" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Penerima" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="PenerimaanH_ReturTerima" Member="PenerimaanH" ThisKey="PenerimaanId" OtherKey="PenerimaanId" Type="PenerimaanH" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TrnPengirimanD" Member="TrnPengirimanDs">
+    <Type Name="TrnPengirimanD">
+      <Column Name="TrnPengirimanDId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TrnPengirimanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Association Name="TrnPengirimanD_TrnPengirimanH" Member="TrnPengirimanHs" ThisKey="TrnPengirimanId" OtherKey="TrnPengirimanId" Type="TrnPengirimanH" />
+      <Association Name="Pembungkus_TrnPengirimanD" Member="Pembungkus" ThisKey="PembungkusId" OtherKey="PembungkusId" Type="Pembungkus" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ReturTrnKirim" Member="ReturTrnKirims">
+    <Type Name="ReturTrnKirim">
+      <Column Name="ReturTrnKirimId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PengirimanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="TglTerima" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Penerima" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="TrnPengirimanH_ReturTrnKirim" Member="TrnPengirimanH" ThisKey="PengirimanId" OtherKey="TrnPengirimanId" Type="TrnPengirimanH" IsForeignKey="true" />
+      <Association Name="Karyawan_ReturTrnKirim" Member="Karyawan" ThisKey="KaryawanId" OtherKey="KaryawanId" Type="Karyawan" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TrnPenerimaanD" Member="TrnPenerimaanDs">
+    <Type Name="TrnPenerimaanD">
+      <Column Name="TrnPenerimaanDId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TrnPenerimaanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Association Name="TrnPenerimaanD_TrnPenerimaanH" Member="TrnPenerimaanHs" ThisKey="TrnPenerimaanId" OtherKey="TrnPenerimaanId" Type="TrnPenerimaanH" />
+      <Association Name="Pembungkus_TrnPenerimaanD" Member="Pembungkus" ThisKey="PembungkusId" OtherKey="PembungkusId" Type="Pembungkus" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ReturTrnTerima" Member="ReturTrnTerimas">
+    <Type Name="ReturTrnTerima">
+      <Column Name="ReturTrnTerimaId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PenerimaanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="TglTerima" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Penerima" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="TrnPenerimaanH_ReturTrnTerima" Member="TrnPenerimaanH" ThisKey="PenerimaanId" OtherKey="TrnPenerimaanId" Type="TrnPenerimaanH" IsForeignKey="true" />
+      <Association Name="Karyawan_ReturTrnTerima" Member="Karyawan" ThisKey="KaryawanId" OtherKey="KaryawanId" Type="Karyawan" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TrnPengirimanH" Member="TrnPengirimanHs">
+    <Type Name="TrnPengirimanH">
+      <Column Name="TrnPengirimanId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="NamaPng" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPng" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPng" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPng" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="NamaPnr" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPnr" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPnr" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPnr" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="BiayaPenerus" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Terbilang" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="TrnPengirimanH_ReturTrnKirim" Member="ReturTrnKirims" ThisKey="TrnPengirimanId" OtherKey="PengirimanId" Type="ReturTrnKirim" />
+      <Association Name="Cabang_TrnPengirimanH" Member="Cabang" ThisKey="CabangId" OtherKey="CabangId" Type="Cabang" IsForeignKey="true" />
+      <Association Name="Kendaraan_TrnPengirimanH" Member="Kendaraan" ThisKey="KendaraanId" OtherKey="KendaraanId" Type="Kendaraan" IsForeignKey="true" />
+      <Association Name="Pembayaran_TrnPengirimanH" Member="Pembayaran" ThisKey="PembayaranId" OtherKey="PembayaranId" Type="Pembayaran" IsForeignKey="true" />
+      <Association Name="TrnPengirimanD_TrnPengirimanH" Member="TrnPengirimanD" ThisKey="TrnPengirimanId" OtherKey="TrnPengirimanId" Type="TrnPengirimanD" IsForeignKey="true" />
+      <Association Name="Karyawan_TrnPengirimanH" Member="Karyawan" ThisKey="KaryawanId" OtherKey="KaryawanId" Type="Karyawan" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TrnPenerimaanH" Member="TrnPenerimaanHs">
+    <Type Name="TrnPenerimaanH">
+      <Column Name="TrnPenerimaanId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="NamaPng" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPng" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPng" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPng" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="NamaPnr" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPnr" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPnr" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPnr" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="BiayaPenerus" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Terbilang" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="TrnPenerimaanH_ReturTrnTerima" Member="ReturTrnTerimas" ThisKey="TrnPenerimaanId" OtherKey="PenerimaanId" Type="ReturTrnTerima" />
+      <Association Name="Cabang_TrnPenerimaanH" Member="Cabang" ThisKey="CabangId" OtherKey="CabangId" Type="Cabang" IsForeignKey="true" />
+      <Association Name="Kendaraan_TrnPenerimaanH" Member="Kendaraan" ThisKey="KendaraanId" OtherKey="KendaraanId" Type="Kendaraan" IsForeignKey="true" />
+      <Association Name="Pembayaran_TrnPenerimaanH" Member="Pembayaran" ThisKey="PembayaranId" OtherKey="PembayaranId" Type="Pembayaran" IsForeignKey="true" />
+      <Association Name="TrnPenerimaanD_TrnPenerimaanH" Member="TrnPenerimaanD" ThisKey="TrnPenerimaanId" OtherKey="TrnPenerimaanId" Type="TrnPenerimaanD" IsForeignKey="true" />
+      <Association Name="Karyawan_TrnPenerimaanH" Member="Karyawan" ThisKey="KaryawanId" OtherKey="KaryawanId" Type="Karyawan" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Supir" Member="Supirs">
+    <Type Name="Supir">
+      <Column Name="SupirId" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NamaSupir" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Telpon" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="AlamatSupir" Type="System.String" DbType="NChar(70)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Karyawan" Member="Karyawans">
+    <Type Name="Karyawan">
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nama" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Jabatan" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Telpon" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="Alamat" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Karyawan_PengirimanH" Member="PengirimanHs" ThisKey="KaryawanId" OtherKey="KaryawanId" Type="PengirimanH" />
+      <Association Name="Karyawan_PenerimaanH" Member="PenerimaanHs" ThisKey="KaryawanId" OtherKey="KaryawanId" Type="PenerimaanH" />
+      <Association Name="Karyawan_TrnPengirimanH" Member="TrnPengirimanHs" ThisKey="KaryawanId" OtherKey="KaryawanId" Type="TrnPengirimanH" />
+      <Association Name="Karyawan_TrnPenerimaanH" Member="TrnPenerimaanHs" ThisKey="KaryawanId" OtherKey="KaryawanId" Type="TrnPenerimaanH" />
+      <Association Name="Karyawan_ReturKirim" Member="ReturKirims" ThisKey="KaryawanId" OtherKey="KaryawanId" Type="ReturKirim" />
+      <Association Name="Karyawan_ReturTrnKirim" Member="ReturTrnKirims" ThisKey="KaryawanId" OtherKey="KaryawanId" Type="ReturTrnKirim" />
+      <Association Name="Karyawan_ReturTrnTerima" Member="ReturTrnTerimas" ThisKey="KaryawanId" OtherKey="KaryawanId" Type="ReturTrnTerima" />
+      <Association Name="Karyawan_TrnLogin" Member="TrnLogins" ThisKey="KaryawanId" OtherKey="KaryawanId" Type="TrnLogin" />
+    </Type>
+  </Table>
+  <Function Name="dbo.GetTD" Method="GetTD">
+    <ElementType Name="GetTDResult">
+      <Column Name="PengirimanDId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PengirimanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBungkus" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetTH" Method="GetTH">
+    <ElementType Name="GetTHResult">
+      <Column Name="PengirimanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="PengirimId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NamaPengirim" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPengirim" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PenerimaId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NamaPenerima" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPenerima" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NmCabang" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="AlamatCabang" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBayar" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NoPolisi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Jenis" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Checker" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetTrn" Method="GetTrn">
+    <ElementType Name="GetTrnResult">
+      <Column Name="PengirimanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="PengirimId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NamaPengirim" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPengirim" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PenerimaId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NamaPenerima" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPenerima" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NmCabang" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="AlamatCabang" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBayar" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NoPolisi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Jenis" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Checker" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="PengirimanDId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PengirimanId1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBungkus" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetTDByPengId" Method="GetTDByPengId">
+    <Parameter Name="PengirimanId" Parameter="pengirimanId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetTDByPengIdResult">
+      <Column Name="PengirimanDId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PengirimanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBungkus" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetTHByPengId" Method="GetTHByPengId">
+    <Parameter Name="PengirimanId" Parameter="pengirimanId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetTHByPengIdResult">
+      <Column Name="PengirimanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="PengirimId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NamaPengirim" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="PenerimaId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NamaPelanggan" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NmCabang" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="AlamatCabang" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBayar" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NoPolisi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Jenis" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Checker" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetTrnByPengId" Method="GetTrnByPengId">
+    <Parameter Name="PengirimanId" Parameter="pengirimanId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetTrnByPengIdResult">
+      <Column Name="PengirimanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="PengirimId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NamaPengirim" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="PenerimaId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NamaPelanggan" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NmCabang" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="AlamatCabang" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBayar" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NoPolisi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Jenis" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Checker" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="PengirimanDId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PengirimanId1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBungkus" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetPenerimaan" Method="GetPenerimaan">
+    <ElementType Name="GetPenerimaanResult">
+      <Column Name="PenerimaanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="PengirimId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NamaPengirim" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPengirim" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PenerimaId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NamaPenerima" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPenerima" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NmCabang" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="AlamatCabang" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBayar" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NoPolisi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Jenis" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Checker" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="PenerimaanDId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PenerimaanId1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBungkus" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetPenerimaanHByPengId" Method="GetPenerimaanHByPengId">
+    <Parameter Name="PengirimanId" Parameter="pengirimanId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetPenerimaanHByPengIdResult">
+      <Column Name="PenerimaanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="PengirimId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NamaPengirim" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="PenerimaId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NamaPelanggan" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NmCabang" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="AlamatCabang" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBayar" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NoPolisi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Jenis" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Checker" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetPenerimaanByPengId" Method="GetPenerimaanByPengId">
+    <Parameter Name="PenerimaanId" Parameter="penerimaanId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetPenerimaanByPengIdResult">
+      <Column Name="PenerimaanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="PengirimId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NamaPengirim" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="PenerimaId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NamaPelanggan" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NmCabang" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="AlamatCabang" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBayar" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NoPolisi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Jenis" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Checker" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="PenerimaanDId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PenerimaanId1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBungkus" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetPenerimaanD" Method="GetPenerimaanD">
+    <ElementType Name="GetPenerimaanDResult">
+      <Column Name="PenerimaanDId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PenerimaanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBungkus" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetPenerimaanDByPengId" Method="GetPenerimaanDByPengId">
+    <Parameter Name="PengirimanId" Parameter="pengirimanId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetPenerimaanDByPengIdResult">
+      <Column Name="PenerimaanDId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PenerimaanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBungkus" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetPenerimaanH" Method="GetPenerimaanH">
+    <ElementType Name="GetPenerimaanHResult">
+      <Column Name="PenerimaanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="PengirimId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NamaPengirim" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPengirim" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PenerimaId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NamaPenerima" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPenerima" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NmCabang" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="AlamatCabang" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBayar" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NoPolisi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Jenis" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Checker" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetTransaksiD" Method="GetTransaksiD">
+    <ElementType Name="GetTransaksiDResult">
+      <Column Name="TrnPengirimanDId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TrnPengirimanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBungkus" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetTransaksiDByPengId" Method="GetTransaksiDByPengId">
+    <Parameter Name="PengirimanId" Parameter="pengirimanId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetTransaksiDByPengIdResult">
+      <Column Name="TrnPengirimanDId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TrnPengirimanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBungkus" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetTrnPenerimaanD" Method="GetTrnPenerimaanD">
+    <ElementType Name="GetTrnPenerimaanDResult">
+      <Column Name="TrnPenerimaanDId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TrnPenerimaanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBungkus" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetTrnPenerimaanDByPengId" Method="GetTrnPenerimaanDByPengId">
+    <Parameter Name="PenerimaanId" Parameter="penerimaanId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetTrnPenerimaanDByPengIdResult">
+      <Column Name="TrnPenerimaanDId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TrnPenerimaanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBungkus" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetPengirimanReport" Method="GetPengirimanReport">
+    <ElementType Name="GetPengirimanReportResult">
+      <Column Name="TrnPengirimanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="NamaPengirim" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPng" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPng" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPengirim" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="NamaPenerima" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPnr" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPnr" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPenerima" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NmCabang" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="AlamatCabang" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Keterangan" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NoPolisi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Jenis" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="BiayaPenerus" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Terbilang" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Checker" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Jabatan" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TrnPengirimanDId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TrnPengirimanId1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBungkus" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="TglInputRetur" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="TglTerima" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="PenerimaRetur" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KaryawanId1" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ReturKirimInputer" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetPenerimaanReport" Method="GetPenerimaanReport">
+    <ElementType Name="GetPenerimaanReportResult">
+      <Column Name="TrnPenerimaanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="NamaPengirim" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPng" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPng" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPengirim" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="NamaPenerima" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPnr" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPnr" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPenerima" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NmCabang" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="Telp" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPerson" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="AlamatCabang" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBayar" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NoPolisi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Jenis" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="BiayaPenerus" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Terbilang" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Checker" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TrnPenerimaanDId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TrnPenerimaanId1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBungkus" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="TglInputRetur" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="TglTerima" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="PenerimaRetur" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KaryawanId1" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ReturTerimaInputer" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetRtrTerimaByPengId" Method="GetRtrTerimaByPengId">
+    <Parameter Name="PenerimaanId" Parameter="penerimaanId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetRtrTerimaByPengIdResult">
+      <Column Name="ReturTrnTerimaId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PenerimaanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="TglTerima" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Penerima" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Nama" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetRtrKirimByPengId" Method="GetRtrKirimByPengId">
+    <Parameter Name="PengirimanId" Parameter="pengirimanId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetRtrKirimByPengIdResult">
+      <Column Name="ReturTrnKirimId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PengirimanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="TglTerima" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Penerima" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Nama" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetLapKirim" Method="GetLapKirim">
+    <ElementType Name="GetLapKirimResult">
+      <Column Name="TrnPengirimanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="NamaPengirim" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPng" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPng" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPengirim" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="NamaPenerima" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPnr" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPnr" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPenerima" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NmCabang" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="AlamatCabang" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Keterangan" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NoPolisi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Jenis" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="BiayaPenerus" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Terbilang" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Checker" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Jabatan" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TrnPengirimanDId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TrnPengirimanId1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBungkus" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetLapTerima" Method="GetLapTerima">
+    <ElementType Name="GetLapTerimaResult">
+      <Column Name="TrnPenerimaanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="NamaPengirim" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPng" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPng" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPengirim" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="NamaPenerima" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPnr" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPnr" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPenerima" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NmCabang" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="Telp" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPerson" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="AlamatCabang" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBayar" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NoPolisi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Jenis" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="BiayaPenerus" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Terbilang" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Checker" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TrnPenerimaanDId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TrnPenerimaanId1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBungkus" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetTransaksi" Method="GetTransaksi">
+    <ElementType Name="GetTransaksiResult">
+      <Column Name="TrnPengirimanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="NamaPengirim" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPng" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPng" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPengirim" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="NamaPenerima" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPnr" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPnr" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPenerima" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NmCabang" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="AlamatCabang" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Keterangan" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NoPolisi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Jenis" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="BiayaPenerus" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Terbilang" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Checker" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Jabatan" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TrnPengirimanDId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TrnPengirimanId1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBungkus" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetTransaksiByPengId" Method="GetTransaksiByPengId">
+    <Parameter Name="PengirimanId" Parameter="pengirimanId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetTransaksiByPengIdResult">
+      <Column Name="TrnPengirimanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="NamaPengirim" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPng" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPng" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPengirim" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="NamaPenerima" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPnr" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPnr" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPenerima" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NmCabang" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="AlamatCabang" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Keterangan" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NoPolisi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Jenis" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="BiayaPenerus" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Terbilang" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Checker" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Jabatan" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TrnPengirimanDId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TrnPengirimanId1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBungkus" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetTransaksiH" Method="GetTransaksiH">
+    <ElementType Name="GetTransaksiHResult">
+      <Column Name="TrnPengirimanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="NamaPengirim" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPng" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPng" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPengirim" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="NamaPenerima" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPnr" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPnr" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPenerima" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NmCabang" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="Alamat" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Keterangan" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NoPolisi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Jenis" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="BiayaPenerus" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Terbilang" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Nama" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Jabatan" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetTransaksiHByPengId" Method="GetTransaksiHByPengId">
+    <Parameter Name="PengirimanId" Parameter="pengirimanId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetTransaksiHByPengIdResult">
+      <Column Name="TrnPengirimanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="NamaPengirim" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPng" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPng" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPengirim" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="NamaPenerima" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPnr" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPnr" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPenerima" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NmCabang" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="Alamat" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Keterangan" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NoPolisi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Jenis" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="BiayaPenerus" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Terbilang" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Nama" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Jabatan" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetTrnPenerimaan" Method="GetTrnPenerimaan">
+    <ElementType Name="GetTrnPenerimaanResult">
+      <Column Name="TrnPenerimaanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="NamaPengirim" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPng" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPng" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPengirim" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="NamaPenerima" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPnr" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPnr" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPenerima" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NmCabang" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="Telp" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPerson" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="AlamatCabang" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBayar" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NoPolisi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Jenis" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="BiayaPenerus" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Terbilang" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Checker" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TrnPenerimaanDId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TrnPenerimaanId1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBungkus" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetTrnPenerimaanByPengId" Method="GetTrnPenerimaanByPengId">
+    <Parameter Name="PenerimaanId" Parameter="penerimaanId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetTrnPenerimaanByPengIdResult">
+      <Column Name="TrnPenerimaanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="NamaPengirim" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPng" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPng" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPengirim" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="NamaPenerima" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPnr" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPnr" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPenerima" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NmCabang" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="Telp" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPerson" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="AlamatCabang" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBayar" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NoPolisi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Jenis" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="BiayaPenerus" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Terbilang" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Checker" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TrnPenerimaanDId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TrnPenerimaanId1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JmlColie" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PembungkusId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBungkus" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NamaBarang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Berat" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetTrnPenerimaanH" Method="GetTrnPenerimaanH">
+    <ElementType Name="GetTrnPenerimaanHResult">
+      <Column Name="TrnPenerimaanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="NamaPengirim" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPng" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPng" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPengirim" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="NamaPenerima" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPnr" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPnr" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPenerima" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NmCabang" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="Telp" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPerson" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="AlamatCabang" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBayar" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NoPolisi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Jenis" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="BiayaPenerus" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Terbilang" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Checker" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetTrnPenerimaanHByPengId" Method="GetTrnPenerimaanHByPengId">
+    <Parameter Name="PenerimaanId" Parameter="penerimaanId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetTrnPenerimaanHByPengIdResult">
+      <Column Name="TrnPenerimaanId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoSeri" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TglInput" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="NamaPengirim" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPng" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPng" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPengirim" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="NamaPenerima" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="TelpPnr" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPersonPnr" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="AlamatPenerima" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="CabangId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NmCabang" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="Telp" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="KtPerson" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="AlamatCabang" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="PembayaranId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KetBayar" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="KendaraanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NoPolisi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Jenis" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="BiayaPenerus" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Biaya" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Terbilang" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="KaryawanId" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Checker" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

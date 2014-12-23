@@ -1,0 +1,39 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:extendedButton="clr-namespace:ExtendedButton;assembly=ExtendedButton"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        mc:Ignorable="d" x:Class="BPDMH.MasterData.Maintenance" WindowStyle="ToolWindow" SizeToContent="Width" 
+        WindowStartupLocation="CenterScreen" FontFamily="Arial" 
+        Title="MAINTENANCE" Height="230" Width="500" Loaded="Maintenance_OnLoaded">
+
+    <Grid Margin="0,0,0,87">
+        <StackPanel HorizontalAlignment="Center" Height="135" VerticalAlignment="Top" Width="500" RenderTransformOrigin="0.5,0.5" Margin="-5,50,-3,-73">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.746"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="1.679"/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
+            <StackPanel Height="42" Margin="0,3,0,0" Orientation="Horizontal" HorizontalAlignment="Left" Width="499">
+                <Label Content="Pengiriman" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center" 
+					Width="120" FontFamily="Arial" Height="25" Margin="0,0,0,0" />
+                <TextBox x:Name="TbId" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="70" FontFamily="Arial" Height="25" VerticalAlignment="Center" IsEnabled="False"/>
+                <extendedButton:ImageButton x:Name="BtnCekPengiriman" Image="../Images/SaveIconNoCircle.png" ImageWidth="10" ImageHeight="12" Width="80" Margin="5,0,0,0" Height="30" Content="Cek" Click="BtnCekPengiriman_OnClick"/>
+                <extendedButton:ImageButton x:Name="BtnHapusPengiriman" Image="../Images/SaveIconNoCircle.png" ImageWidth="10" ImageHeight="12" Width="80" Margin="5,0,0,0" Height="30" Content="Hapus" Click="BtnHapusPengiriman_OnClick"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="40" Margin="0,10,0,0" Width="498">
+                <Label Content="Penerimaan" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" VerticalAlignment="Center"
+					Width="120" FontFamily="Arial" Height="25" Margin="0,0,0,0" />
+                <TextBox x:Name="TbNama" VerticalContentAlignment="Center" Margin="5,0,0,0" Width="70" FontFamily="Arial" IsEnabled="False" Height="25" VerticalAlignment="Center"/>
+                <extendedButton:ImageButton x:Name="BtnCekPenerimaan" Image="../Images/DeleteIconNoCircle.png" Margin="5,0,0,0" ImageWidth="10" ImageHeight="12" Content="Cek" Width="80" Height="30" Click="BtnCekPenerimaan_OnClick" VerticalAlignment="Center"/>
+                <extendedButton:ImageButton x:Name="BtnHapusPenerimaan" Image="../Images/SaveIconNoCircle.png" ImageWidth="10" ImageHeight="12" Width="80" Margin="5,0,0,0" Height="30" Content="Hapus" Click="BtnHapusPenerimaan_OnClick"/>
+                <extendedButton:ImageButton x:Name="BtnTutup" Image="../Images/SaveIconNoCircle.png" ImageWidth="10" ImageHeight="12" Width="80" Margin="5,0,0,0" Height="30" Content="Tutup" Click="BtnTutup_OnClick"/>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>

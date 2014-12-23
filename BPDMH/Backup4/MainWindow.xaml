@@ -1,0 +1,24 @@
+﻿<Window x:Class="AdvancedReportViewer.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:domain="clr-namespace:AdvancedReportViewer.Domain"
+    xmlns:controls="clr-namespace:AdvancedReportViewer.UserControls"
+    Title="Advanced Report Viewer"
+    MinWidth="400" MinHeight="600"
+    WindowState="Maximized"
+    >
+    <Grid>
+        <Grid.Resources>
+            <domain:Person x:Key="samplePerson">
+                <domain:Person.FirstName>Shirley</domain:Person.FirstName>
+                <domain:Person.LastName>Manson</domain:Person.LastName>
+                <domain:Person.Age>28</domain:Person.Age>
+            </domain:Person>
+        </Grid.Resources>
+        
+        <controls:ReportViewerUserControl 
+            DataSource="{StaticResource samplePerson}"
+            EmbeddedReport="AdvancedReportViewer.Reports.SampleReport.rdlc"
+            />
+    </Grid>
+</Window>

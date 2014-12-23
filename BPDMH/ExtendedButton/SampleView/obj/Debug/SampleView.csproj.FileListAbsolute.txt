@@ -1,0 +1,14 @@
+D:\WindowsFormPractice\ExtendedButton\ExtendedButton\SampleView\bin\Debug\SampleView.exe
+D:\WindowsFormPractice\ExtendedButton\ExtendedButton\SampleView\bin\Debug\SampleView.pdb
+D:\WindowsFormPractice\ExtendedButton\ExtendedButton\SampleView\bin\Debug\ExtendedButton.dll
+D:\WindowsFormPractice\ExtendedButton\ExtendedButton\SampleView\bin\Debug\ExtendedButton.pdb
+D:\WindowsFormPractice\ExtendedButton\ExtendedButton\SampleView\obj\Debug\SampleView.csprojResolveAssemblyReference.cache
+D:\WindowsFormPractice\ExtendedButton\ExtendedButton\SampleView\obj\Debug\MainWindow.baml
+D:\WindowsFormPractice\ExtendedButton\ExtendedButton\SampleView\obj\Debug\MainWindow.g.cs
+D:\WindowsFormPractice\ExtendedButton\ExtendedButton\SampleView\obj\Debug\App.g.cs
+D:\WindowsFormPractice\ExtendedButton\ExtendedButton\SampleView\obj\Debug\SampleView_MarkupCompile.cache
+D:\WindowsFormPractice\ExtendedButton\ExtendedButton\SampleView\obj\Debug\SampleView.g.resources
+D:\WindowsFormPractice\ExtendedButton\ExtendedButton\SampleView\obj\Debug\SampleView.Properties.Resources.resources
+D:\WindowsFormPractice\ExtendedButton\ExtendedButton\SampleView\obj\Debug\SampleView.csproj.GenerateResource.Cache
+D:\WindowsFormPractice\ExtendedButton\ExtendedButton\SampleView\obj\Debug\SampleView.exe
+D:\WindowsFormPractice\ExtendedButton\ExtendedButton\SampleView\obj\Debug\SampleView.pdb

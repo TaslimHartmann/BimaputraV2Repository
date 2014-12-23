@@ -1,0 +1,120 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:EB="clr-namespace:ExtendedButton;assembly=ExtendedButton" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" 
+        x:Class="BPDMH.MasterData.MasterUser"
+        Title="Master User" BorderBrush="RoyalBlue" WindowStyle="ToolWindow" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" 
+		VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontFamily="Arial" Width="769"  >
+    <Grid Margin="0,0,58,0" VerticalAlignment="Stretch" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="115*"/>
+            <ColumnDefinition Width="220*"/>
+            <ColumnDefinition Width="90*"/>
+            <ColumnDefinition Width="184*"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="63*"/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Fill="Transparent" HorizontalAlignment="Left" Height="146" Stroke="RoyalBlue" VerticalAlignment="Top" Width="693" Margin="20,20,-10,0"
+		  RadiusY="2.5" RadiusX="2.5" Grid.ColumnSpan="7">
+        </Rectangle>
+        <TextBlock HorizontalAlignment="Left" Height="29" Margin="33.5,48,0,0" TextWrapping="Wrap" Text="Kode" VerticalAlignment="Top" Width="49" FontSize="13.333"/>
+        <TextBlock HorizontalAlignment="Left" Height="29" Margin="33.5,82,0,0" TextWrapping="Wrap" Text="Nama" VerticalAlignment="Top" Width="74" FontSize="13.333"/>
+        <TextBlock HorizontalAlignment="Left" Height="29" Margin="33.5,116,0,0" TextWrapping="Wrap" Text="Jabatan" VerticalAlignment="Top" Width="74" FontSize="13.333"/>
+        <TextBox x:Name="TbKdUser" Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="5.5,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" FontSize="13.333" SelectionBrush="RoyalBlue"
+			MaxLength="10"/>
+        <TextBox x:Name="TbNamaUser" Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="5.5,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" FontSize="13.333" MaxLength="50"/>
+        <TextBox x:Name="TbJabatan" Grid.Column="1" HorizontalAlignment="Left" Height="29" Margin="5.5,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" FontSize="13.333" MaxLength="50"/>
+        <Rectangle Grid.Column="5" Fill="Transparent" HorizontalAlignment="Left" Height="30" Margin="1.019,82,-20.929,0" Stroke="RoyalBlue" VerticalAlignment="Top" Width="83" RadiusY="3" RadiusX="3" Grid.ColumnSpan="2"/>
+        <EB:ImageButton x:Name="BtnUserSimpan" Content="Simpan" Grid.Column="5" HorizontalAlignment="Right" Margin="0,50,-16,0" VerticalAlignment="Top" Width="75                         " Height="24" Background="Transparent" BorderBrush="Transparent" Click="BtnUserSimpan_Click"
+			Image="../Images/SaveIconNoCircle.png" ImageWidth="10" ImageHeight="10" FontSize="13.333" Grid.ColumnSpan="2"/>
+        <Rectangle Grid.Column="5" Fill="Transparent" HorizontalAlignment="Left" Height="30" Margin="1.019,116,-20.929,0" Stroke="RoyalBlue" VerticalAlignment="Top" Width="83" RadiusY="3" RadiusX="3" Grid.ColumnSpan="2"/>
+        <EB:ImageButton x:Name="BtnUserHapus" Content="Hapus" Grid.Column="5" HorizontalAlignment="Left" Margin="4.019,119,-16.929,0" VerticalAlignment="Top" Width="76" Height="24" Background="Transparent" 
+			BorderBrush="Transparent" Click="BtnUserHapus_Click" Image="../Images/DeleteIconNoCircle.png" ImageWidth="8" ImageHeight="8" FontSize="13.333" Grid.ColumnSpan="2"/>
+        <EB:ImageButton x:Name="BtnClose" Content="Tutup" Grid.Column="5" HorizontalAlignment="Left" Margin="5,85,-17,0" VerticalAlignment="Top" Width="76" Height="24" Background="Transparent" 
+			BorderBrush="Transparent" Image="../Images/DeleteIconNoCircle.png" ImageWidth="8" Click="BtnClose_OnClick" ImageHeight="8" FontSize="13.333" Grid.ColumnSpan="2"/>
+        <!--        <DataGrid x:Name="GVUser" HorizontalAlignment="Left" VerticalAlignment="Top" Height="77" Width="469" Margin="26,209,0,0" Grid.ColumnSpan="2" AutoGenerateColumns="False">-->
+        <!--            <DataGrid.Columns >-->
+        <!--                <DataGridTextColumn Header="Kode" IsReadOnly="True" x:Name="ClKdUser" Binding="{Binding Path=KdKnd}"  />-->
+        <!--                <DataGridTextColumn Header="Nama" IsReadOnly="True" x:Name="ClNmUser"/>-->
+        <!--                <DataGridTextColumn Header="Password" IsReadOnly="True" x:Name="ClPassword" TextOptions.TextFormattingMode="Ideal"/>-->
+        <!--                <DataGridTemplateColumn Header="Edit" Width="50">-->
+        <!--                    <DataGridTemplateColumn.CellTemplate>-->
+        <!--                        <DataTemplate>-->
+        <!--                            <Button Content="Edit" />-->
+        <!--                        </DataTemplate>-->
+        <!--                    </DataGridTemplateColumn.CellTemplate>-->
+        <!--                </DataGridTemplateColumn>-->
+        <!--                <DataGridTemplateColumn Header="Add" Width="50">-->
+        <!--                    <DataGridTemplateColumn.CellTemplate >-->
+        <!--                        <DataTemplate>-->
+        <!--                            <Button Content="Add" />-->
+        <!--                        </DataTemplate>-->
+        <!--                    </DataGridTemplateColumn.CellTemplate>-->
+        <!--                </DataGridTemplateColumn>-->
+        <!--            </DataGrid.Columns>-->
+        <!--            -->
+        <!--        </DataGrid>-->
+
+        <ListView Margin="20,190,-10,37" x:Name="ListView1" Grid.ColumnSpan="7" SelectionMode="Single"
+			SelectionChanged="ListView1_SelectionChanged" RenderTransformOrigin="1,0.5" FontSize="13.333" >
+            <ListView.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ListView.RenderTransform>
+            <ListView.View>
+                <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Authors"  >
+
+                    <!-- Add a ContextMenu to GridView Header -->
+                    <GridView.ColumnHeaderContextMenu>
+                        <ContextMenu FontFamily="Arial" >
+                            <MenuItem Header="Ascending"  />
+                            <MenuItem Header="Descending" />
+                        </ContextMenu>
+                    </GridView.ColumnHeaderContextMenu>
+                    <!--                     Add GridVeiw Columns -->
+                    <GridViewColumn Header="Kode" Width="50" DisplayMemberBinding="{Binding KaryawanId}" />
+                    <GridViewColumn Header="Nama" Width="100" DisplayMemberBinding="{Binding Nama}" />
+                    <GridViewColumn Header="Jabatan" Width="150" DisplayMemberBinding="{Binding Jabatan}" />
+                    <GridViewColumn Header="Telpon" Width="100" DisplayMemberBinding="{Binding Telpon}" />
+                    <GridViewColumn Header="Alamat" Width="200" DisplayMemberBinding="{Binding Alamat}" />
+                    <GridViewColumn Header="Password" Width="100" DisplayMemberBinding="{Binding Password}" />
+                    <!--                    <GridViewColumn x:Name="GvcExistingValue">-->
+                    <!--                        <GridViewColumnHeader Content="Edit" Width="100"/>-->
+                    <!--                        <GridViewColumn.CellTemplate>-->
+                    <!--                            <DataTemplate>-->
+                    <!--                                <TextBox x:Name="tbExistingValue" Width="100"-->
+                    <!--                                    Text="{Binding Path=Password, Mode=TwoWay, ValidatesOnExceptions=True, -->
+                    <!--                                    ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=Explicit}"-->
+                    <!--                                />-->
+                    <!--                            </DataTemplate>-->
+                    <!--                        </GridViewColumn.CellTemplate>-->
+                    <!--                    </GridViewColumn>-->
+                    <!---->
+					<!--                    <GridViewColumn x:Name="GvcExisting">-->
+                    <!--                        <GridViewColumnHeader Content="Delete" Width="100"/>-->
+                    <!--                        <GridViewColumn.CellTemplate>-->
+                    <!--                            <DataTemplate>-->
+                    <!--                                <Button x:Name="DeleteButton" Width="100" Click="DeleteButton_Click" -->
+                    <!--                                    -->
+                    <!--                                />-->
+                    <!--                            </DataTemplate>-->
+                    <!--                        </GridViewColumn.CellTemplate>-->
+                    <!--                    </GridViewColumn>-->
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBlock HorizontalAlignment="Left" Height="29" Margin="0.481,48,0,0" TextWrapping="Wrap" Text="Telpon" VerticalAlignment="Top" Width="49" FontSize="13.333" Grid.Column="2"/>
+        <TextBlock HorizontalAlignment="Left" Height="29" Margin="0.481,82,0,0" TextWrapping="Wrap" Text="Alamat" VerticalAlignment="Top" Width="74" FontSize="13.333" Grid.Column="2"/>
+        <TextBlock HorizontalAlignment="Left" Height="29" Margin="0.481,116,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="74" FontSize="13.333" Grid.Column="2"/>
+        <TextBox x:Name="TbTelpon" Grid.Column="3" HorizontalAlignment="Left" Height="29" Margin="5.481,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" FontSize="13.333" SelectionBrush="RoyalBlue"
+        	MaxLength="10"/>
+        <TextBox x:Name="TbAlamat" Grid.Column="3" HorizontalAlignment="Left" Height="29" Margin="5.481,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" FontSize="13.333" MaxLength="50" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="TbPassword" Grid.Column="3" HorizontalAlignment="Left" Height="29" Margin="5.481,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" FontSize="13.333" MaxLength="50" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>

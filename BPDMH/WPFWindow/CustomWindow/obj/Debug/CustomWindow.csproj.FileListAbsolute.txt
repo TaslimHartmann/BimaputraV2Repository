@@ -1,0 +1,22 @@
+C:\Users\Taslim Hartmann\Downloads\CustomWindow\WPFWindow\CustomWindow\bin\Debug\CustomWindow.dll
+C:\Users\Taslim Hartmann\Downloads\CustomWindow\WPFWindow\CustomWindow\bin\Debug\CustomWindow.pdb
+C:\Users\Taslim Hartmann\Downloads\CustomWindow\WPFWindow\CustomWindow\obj\Debug\CustomWindow.csprojResolveAssemblyReference.cache
+C:\Users\Taslim Hartmann\Downloads\CustomWindow\WPFWindow\CustomWindow\obj\Debug\WindowButton.baml
+C:\Users\Taslim Hartmann\Downloads\CustomWindow\WPFWindow\CustomWindow\obj\Debug\WindowButton.g.cs
+C:\Users\Taslim Hartmann\Downloads\CustomWindow\WPFWindow\CustomWindow\obj\Debug\CustomWindow_MarkupCompile.cache
+C:\Users\Taslim Hartmann\Downloads\CustomWindow\WPFWindow\CustomWindow\obj\Debug\CustomWindow.g.resources
+C:\Users\Taslim Hartmann\Downloads\CustomWindow\WPFWindow\CustomWindow\obj\Debug\CustomWindow.Properties.Resources.resources
+C:\Users\Taslim Hartmann\Downloads\CustomWindow\WPFWindow\CustomWindow\obj\Debug\CustomWindow.csproj.GenerateResource.Cache
+C:\Users\Taslim Hartmann\Downloads\CustomWindow\WPFWindow\CustomWindow\obj\Debug\CustomWindow.dll
+C:\Users\Taslim Hartmann\Downloads\CustomWindow\WPFWindow\CustomWindow\obj\Debug\CustomWindow.pdb
+D:\PersonalProject\BP_DMH\BPDMH\WPFWindow\CustomWindow\bin\Debug\CustomWindow.dll
+D:\PersonalProject\BP_DMH\BPDMH\WPFWindow\CustomWindow\bin\Debug\CustomWindow.pdb
+D:\PersonalProject\BP_DMH\BPDMH\WPFWindow\CustomWindow\obj\Debug\CustomWindow.csprojResolveAssemblyReference.cache
+D:\PersonalProject\BP_DMH\BPDMH\WPFWindow\CustomWindow\obj\Debug\WindowButton.baml
+D:\PersonalProject\BP_DMH\BPDMH\WPFWindow\CustomWindow\obj\Debug\WindowButton.g.cs
+D:\PersonalProject\BP_DMH\BPDMH\WPFWindow\CustomWindow\obj\Debug\CustomWindow_MarkupCompile.cache
+D:\PersonalProject\BP_DMH\BPDMH\WPFWindow\CustomWindow\obj\Debug\CustomWindow.g.resources
+D:\PersonalProject\BP_DMH\BPDMH\WPFWindow\CustomWindow\obj\Debug\CustomWindow.Properties.Resources.resources
+D:\PersonalProject\BP_DMH\BPDMH\WPFWindow\CustomWindow\obj\Debug\CustomWindow.csproj.GenerateResource.Cache
+D:\PersonalProject\BP_DMH\BPDMH\WPFWindow\CustomWindow\obj\Debug\CustomWindow.dll
+D:\PersonalProject\BP_DMH\BPDMH\WPFWindow\CustomWindow\obj\Debug\CustomWindow.pdb
